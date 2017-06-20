@@ -73,96 +73,50 @@
   \endentry
 
   \entry{Reference1}{article}{}
-    \name{author}{3}{}{%
-      {{hash=HCJ}{%
-         family={Hawthorn},
-         familyi={H\bibinitperiod},
-         given={C.\bibnamedelima J.},
-         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
-      }}%
-      {{hash=WKP}{%
-         family={Weber},
-         familyi={W\bibinitperiod},
-         given={K.\bibnamedelima P.},
-         giveni={K\bibinitperiod\bibinitdelim P\bibinitperiod},
-      }}%
-      {{hash=SRE}{%
-         family={Scholten},
-         familyi={S\bibinitperiod},
-         given={R.\bibnamedelima E.},
-         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+    \name{author}{1}{}{%
+      {{hash=BJ}{%
+         family={Benson},
+         familyi={B\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
       }}%
     }
-    \strng{namehash}{HCJWKPSRE1}
-    \strng{fullhash}{HCJWKPSRE1}
+    \strng{namehash}{BJ1}
+    \strng{fullhash}{BJ1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{labelyear}{2001}
-    \field{sortinit}{H}
-    \field{sortinithash}{H}
-    \field{abstract}{%
-    We have developed an enhanced Littrow configuration extended cavity diode
-  laser (ECDL) that can be tuned without changing the direction of the output
-  beam. The output of a conventional Littrow ECDL is reflected from a plane
-  mirror fixed parallel to the tuning diffraction grating. Using a free-space
-  Michelson wavemeter to measure the laser wavelength, we can tune the laser
-  over a range greater than 10 nm without any alteration of alignment.%
-    }
-    \field{number}{12}
-    \field{pages}{4477\bibrangedash 4479}
-    \field{title}{Littrow Configuration Tunable External Cavity Diode Laser
-  with Fixed Direction Output Beam}
+    \field{labelyear}{2009}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{title}{Building Your First Personal Kanban}
     \verb{url}
-    \verb http://link.aip.org/link/?RSI/72/4477/1
+    \verb http://www.personalkanban.com/pk/primers/building-your-first-personal
+    \verb -kanban/
     \endverb
-    \field{volume}{72}
-    \field{journaltitle}{Review of Scientific Instruments}
-    \field{month}{12}
-    \field{year}{2001}
+    \field{year}{2009}
   \endentry
 
   \entry{Reference2}{article}{}
-    \name{author}{2}{}{%
-      {{hash=WCE}{%
-         family={Wieman},
+    \name{author}{1}{}{%
+      {{hash=WD}{%
+         family={Wells},
          familyi={W\bibinitperiod},
-         given={Carl\bibnamedelima E.},
-         giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod},
-      }}%
-      {{hash=HL}{%
-         family={Hollberg},
-         familyi={H\bibinitperiod},
-         given={Leo},
-         giveni={L\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
       }}%
     }
-    \keyw{Diode Laser}
-    \strng{namehash}{WCEHL1}
-    \strng{fullhash}{WCEHL1}
+    \strng{namehash}{WD1}
+    \strng{fullhash}{WD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{labelyear}{1991}
+    \field{labelyear}{1999}
     \field{sortinit}{W}
     \field{sortinithash}{W}
-    \field{abstract}{%
-    We present a review of the use of diode lasers in atomic physics with an
-  extensive list of references. We discuss the relevant characteristics of
-  diode lasers and explain how to purchase and use them. We also review the
-  various techniques that have been used to control and narrow the spectral
-  outputs of diode lasers. Finally we present a number of examples illustrating
-  the use of diode lasers in atomic physics experiments. Review of Scientific
-  Instruments is copyrighted by The American Institute of Physics.%
-    }
-    \field{number}{1}
-    \field{pages}{1\bibrangedash 20}
-    \field{title}{Using Diode Lasers for Atomic Physics}
+    \field{title}{Daily Stand Up Meeting}
     \verb{url}
-    \verb http://link.aip.org/link/?RSI/62/1/1
+    \verb http://www.extremeprogramming.org/rules/standupmeeting.html
     \endverb
-    \field{volume}{62}
-    \field{journaltitle}{Review of Scientific Instruments}
-    \field{month}{01}
-    \field{year}{1991}
+    \field{year}{1999}
   \endentry
 \endsortlist
 \endinput

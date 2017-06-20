@@ -10,63 +10,61 @@
 \contentsline {section}{\numberline {1.3}Chapter Overview}{1}{section.17}
 \contentsline {chapter}{\numberline {2}Methods and methodologies}{3}{chapter.18}
 \contentsline {section}{\numberline {2.1}Personal Kanban}{3}{section.19}
-\contentsline {section}{\numberline {2.2}Proof of concept}{3}{section.20}
-\contentsline {chapter}{\numberline {3}Literature review}{5}{chapter.21}
-\contentsline {section}{\numberline {3.1}Creativity}{5}{section.22}
-\contentsline {section}{\numberline {3.2}Computational creativity}{5}{section.23}
-\contentsline {section}{\numberline {3.3}The COINVENT Project}{5}{section.24}
-\contentsline {section}{\numberline {3.4}Concept blending}{5}{section.25}
-\contentsline {chapter}{\numberline {4}Development}{7}{chapter.26}
-\contentsline {section}{\numberline {4.1}Tools and technologies}{7}{section.27}
-\contentsline {section}{\numberline {4.2}Iterations}{7}{section.28}
-\contentsline {section}{\numberline {4.3}Application structure}{7}{section.29}
-\contentsline {chapter}{\numberline {5}Results}{9}{chapter.30}
-\contentsline {section}{\numberline {5.1}Concept blending implementation}{9}{section.31}
-\contentsline {section}{\numberline {5.2}Word sense disambiguation in descriptions}{9}{section.32}
-\contentsline {section}{\numberline {5.3}Creative strategy}{9}{section.33}
-\contentsline {section}{\numberline {5.4}Evaluation of blending}{9}{section.34}
-\contentsline {chapter}{\numberline {6}Evaluation}{11}{chapter.35}
-\contentsline {section}{\numberline {6.1}Performance/Accuracy}{11}{section.36}
-\contentsline {section}{\numberline {6.2}Creative strategy}{11}{section.37}
-\contentsline {section}{\numberline {6.3}Creative value}{11}{section.38}
-\contentsline {section}{\numberline {6.4}Improvements}{11}{section.39}
-\contentsline {chapter}{\numberline {7}Discussion}{13}{chapter.40}
-\contentsline {section}{\numberline {7.1}Theory}{13}{section.41}
-\contentsline {section}{\numberline {7.2}User input in the algorithm}{13}{section.42}
-\contentsline {section}{\numberline {7.3}User interpretation of blending results}{13}{section.43}
-\contentsline {section}{\numberline {7.4}Different uses of the concept blending implementation}{13}{section.44}
-\contentsline {section}{\numberline {7.5}Obstacles}{13}{section.45}
-\contentsline {section}{\numberline {7.6}Summary}{13}{section.46}
-\contentsline {chapter}{\numberline {8}Conclusion and future work}{15}{chapter.47}
-\contentsline {section}{\numberline {8.1}Conclusions}{15}{section.48}
-\contentsline {section}{\numberline {8.2}Future work}{15}{section.49}
-\contentsline {section}{\numberline {8.3}Future research}{15}{section.50}
-\contentsline {chapter}{\numberline {9}Methods and methodologies}{17}{chapter.51}
-\contentsline {section}{\numberline {9.1}Personal Kanban}{17}{section.52}
-\contentsline {section}{\numberline {9.2}Proof of concept}{17}{section.53}
-\contentsline {section}{\numberline {9.3}Welcome and Thank You}{17}{section.54}
-\contentsline {section}{\numberline {9.4}Learning \LaTeX {}}{17}{section.55}
-\contentsline {subsection}{\numberline {9.4.1}A (not so short) Introduction to \LaTeX {}}{17}{subsection.56}
-\contentsline {subsection}{\numberline {9.4.2}A Short Math Guide for \LaTeX {}}{18}{subsection.57}
-\contentsline {subsection}{\numberline {9.4.3}Common \LaTeX {} Math Symbols}{18}{subsection.58}
-\contentsline {subsection}{\numberline {9.4.4}\LaTeX {} on a Mac}{18}{subsection.59}
-\contentsline {section}{\numberline {9.5}Getting Started with this Template}{18}{section.60}
-\contentsline {subsection}{\numberline {9.5.1}About this Template}{19}{subsection.61}
-\contentsline {section}{\numberline {9.6}What this Template Includes}{19}{section.62}
-\contentsline {subsection}{\numberline {9.6.1}Folders}{19}{subsection.63}
-\contentsline {subsection}{\numberline {9.6.2}Files}{20}{subsection.64}
-\contentsline {section}{\numberline {9.7}Filling in Your Information in the \texttt {\bfseries main.tex} File}{20}{section.65}
-\contentsline {section}{\numberline {9.8}The \texttt {main.tex} File Explained}{21}{section.66}
-\contentsline {section}{\numberline {9.9}Thesis Features and Conventions}{22}{section.67}
-\contentsline {subsection}{\numberline {9.9.1}Printing Format}{22}{subsection.68}
-\contentsline {subsection}{\numberline {9.9.2}Using US Letter Paper}{22}{subsection.69}
-\contentsline {subsection}{\numberline {9.9.3}References}{22}{subsection.70}
-\contentsline {subsubsection}{A Note on bibtex}{23}{section*.72}
-\contentsline {subsection}{\numberline {9.9.4}Tables}{23}{subsection.73}
-\contentsline {subsection}{\numberline {9.9.5}Figures}{24}{subsection.75}
-\contentsline {subsection}{\numberline {9.9.6}Typesetting mathematics}{24}{subsection.77}
-\contentsline {section}{\numberline {9.10}Sectioning and Subsectioning}{25}{section.79}
-\contentsline {section}{\numberline {9.11}In Closing}{26}{section.80}
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{27}{appendix.81}
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{27}{section.82}
-\contentsline {chapter}{Bibliography}{29}{appendix*.83}
+\contentsline {section}{\numberline {2.2}Proof of concept}{3}{section.23}
+\contentsline {chapter}{\numberline {3}Literature review}{5}{chapter.24}
+\contentsline {section}{\numberline {3.1}Creativity}{5}{section.25}
+\contentsline {section}{\numberline {3.2}Computational creativity}{5}{section.26}
+\contentsline {section}{\numberline {3.3}The COINVENT Project}{5}{section.27}
+\contentsline {section}{\numberline {3.4}Concept blending}{5}{section.28}
+\contentsline {chapter}{\numberline {4}Development}{7}{chapter.29}
+\contentsline {section}{\numberline {4.1}Tools and technologies}{7}{section.30}
+\contentsline {section}{\numberline {4.2}Iterations}{7}{section.31}
+\contentsline {section}{\numberline {4.3}Application structure}{7}{section.32}
+\contentsline {chapter}{\numberline {5}Results}{9}{chapter.33}
+\contentsline {section}{\numberline {5.1}Concept blending implementation}{9}{section.34}
+\contentsline {section}{\numberline {5.2}Word sense disambiguation in descriptions}{9}{section.35}
+\contentsline {section}{\numberline {5.3}Creative strategy}{9}{section.36}
+\contentsline {section}{\numberline {5.4}Evaluation of blending}{9}{section.37}
+\contentsline {chapter}{\numberline {6}Evaluation}{11}{chapter.38}
+\contentsline {section}{\numberline {6.1}Performance/Accuracy}{11}{section.39}
+\contentsline {section}{\numberline {6.2}Creative strategy}{11}{section.40}
+\contentsline {section}{\numberline {6.3}Creative value}{11}{section.41}
+\contentsline {section}{\numberline {6.4}Improvements}{11}{section.42}
+\contentsline {chapter}{\numberline {7}Discussion}{13}{chapter.43}
+\contentsline {section}{\numberline {7.1}Theory}{13}{section.44}
+\contentsline {section}{\numberline {7.2}User input in the algorithm}{13}{section.45}
+\contentsline {section}{\numberline {7.3}User interpretation of blending results}{13}{section.46}
+\contentsline {section}{\numberline {7.4}Different uses of the concept blending implementation}{13}{section.47}
+\contentsline {section}{\numberline {7.5}Obstacles}{13}{section.48}
+\contentsline {section}{\numberline {7.6}Summary}{13}{section.49}
+\contentsline {chapter}{\numberline {8}Conclusion and future work}{15}{chapter.50}
+\contentsline {section}{\numberline {8.1}Conclusions}{15}{section.51}
+\contentsline {section}{\numberline {8.2}Future work}{15}{section.52}
+\contentsline {section}{\numberline {8.3}Future research}{15}{section.53}
+\contentsline {chapter}{\numberline {9}LaTeX Guide}{17}{chapter.54}
+\contentsline {section}{\numberline {9.1}Welcome and Thank You}{17}{section.55}
+\contentsline {section}{\numberline {9.2}Learning \LaTeX {}}{17}{section.56}
+\contentsline {subsection}{\numberline {9.2.1}A (not so short) Introduction to \LaTeX {}}{17}{subsection.57}
+\contentsline {subsection}{\numberline {9.2.2}A Short Math Guide for \LaTeX {}}{18}{subsection.58}
+\contentsline {subsection}{\numberline {9.2.3}Common \LaTeX {} Math Symbols}{18}{subsection.59}
+\contentsline {subsection}{\numberline {9.2.4}\LaTeX {} on a Mac}{18}{subsection.60}
+\contentsline {section}{\numberline {9.3}Getting Started with this Template}{18}{section.61}
+\contentsline {subsection}{\numberline {9.3.1}About this Template}{19}{subsection.62}
+\contentsline {section}{\numberline {9.4}What this Template Includes}{19}{section.63}
+\contentsline {subsection}{\numberline {9.4.1}Folders}{19}{subsection.64}
+\contentsline {subsection}{\numberline {9.4.2}Files}{19}{subsection.65}
+\contentsline {section}{\numberline {9.5}Filling in Your Information in the \texttt {\bfseries main.tex} File}{20}{section.66}
+\contentsline {section}{\numberline {9.6}The \texttt {main.tex} File Explained}{21}{section.67}
+\contentsline {section}{\numberline {9.7}Thesis Features and Conventions}{22}{section.68}
+\contentsline {subsection}{\numberline {9.7.1}Printing Format}{22}{subsection.69}
+\contentsline {subsection}{\numberline {9.7.2}Using US Letter Paper}{22}{subsection.70}
+\contentsline {subsection}{\numberline {9.7.3}References}{22}{subsection.71}
+\contentsline {subsubsection}{A Note on bibtex}{23}{section*.73}
+\contentsline {subsection}{\numberline {9.7.4}Tables}{23}{subsection.74}
+\contentsline {subsection}{\numberline {9.7.5}Figures}{24}{subsection.76}
+\contentsline {subsection}{\numberline {9.7.6}Typesetting mathematics}{25}{subsection.78}
+\contentsline {section}{\numberline {9.8}Sectioning and Subsectioning}{25}{section.80}
+\contentsline {section}{\numberline {9.9}In Closing}{26}{section.81}
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{27}{appendix.82}
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{27}{section.83}
+\contentsline {chapter}{Bibliography}{29}{appendix*.84}
