@@ -7,6 +7,102 @@
 %----------------------------------------------------------------------------------------
 
 \section{Concept blending implementation}
+We came up with a solution where properties from each concept are sorted with a score that represents how well they are suited for blending. We were improving the algorithm by identifying patterns typical of good candidates in the tree structure of the property words and their hypernyms.
+\subsection{Depth of the word in hypernym tree}
+The first pattern we found was that words that have high generality are not useful. We want more specific words like \emph{drumstick} rather than general and vague words like \emph{object}. Therefore we gave points equal to the depth of the word in the tree.
+\subsection{Branch length to shared hypernyms}
+The second pattern we found was when properties of two concepts share a common root or hypernym, the length of the branch from this root seemed to be useful information. The longer the branch length, the worse were the candidate. Therefore we punished the word by subtracting points equal to the branch length.
+\subsection{Penalizing certain categories}
+Now the winning words were specific, but often abstract, being an instrument in itself or a person (e.g. the inventor). Therefore we chose to punish the words significantly when being in the branch of \emph{abstract entities}, \emph{instruments} or \emph{individuals}. The resulting suggestions were then both physical and specific, which seems to be optimal for creating new instruments.
+
+\begin{table}
+	\caption{Examples of best suggestions when blending different pairs of instruments. Score is based on depth of word in tree (D) minus branch length from shared hypernym (BL)}
+	\label{tab:topscoringexamples}
+	\centering
+	\begin{tabular}{l p{30mm} p{30mm} l l}
+		\toprule
+		\tabhead{Instrument} & \tabhead{Top scoring branch} & \tabhead{Context} & \tabhead{D - BL} & \tabhead{Score} \\
+		\midrule
+		Banjo &
+		integer \newline
+		digit \newline
+		\emph{five} & \emph{five} or six-stringed instrument with a thin membrane stretched over a frame or cavity as a resonator & 7 - 3 & 4	\\
+		Melodica &
+		device \newline 
+		\emph{keyboard} &
+		The \emph{keyboard} is usually two or three octaves long & 8 - 2 &	6
+		\\
+		\midrule
+		Harp &
+		idea \newline
+		plan \newline
+		plan of action \newline
+		play \newline
+		football play \newline
+		\emph{running} \newline
+		(wrong synset) & The harp is a stringed musical instrument that has a number of individual strings \emph{running} at an angle to its soundboard; the strings are plucked with the fingers & 7 - 6 & 1	\\
+		 &
+		construction \newline
+		area \newline
+		enclosure \newline
+		chamber \newline
+		cavity resonator \newline
+		\emph{soundboard} &
+		The harp is a stringed musical instrument that has a number of individual strings running at an angle to its \emph{soundboard}; the strings are plucked with the fingers & 7 - 6 &	1 \\
+		Violin &
+		instrumentalist \newline
+		\emph{violinists} & \emph{Violinists} and collectors particularly prize the instruments made by the Stradivari & 11 - 2 & 9	\\
+		\\
+		\bottomrule\\
+	\end{tabular}
+\end{table}
+
+\begin{table}
+	\caption{Examples of best suggestions when blending different pairs of instruments. Score is based on depth of word in tree (D) minus branch length from shared hypernym (BL). Words are also penalized if they have a hypernym called \emph{abstract entity}, \emph{instrument} or \emph{individual}}
+	\label{tab:topscoringexamplespenalty}
+	\centering
+	\begin{tabular}{l p{30mm} p{30mm} l l}
+		\toprule
+		\tabhead{Instrument} & \tabhead{Top scoring branch} & \tabhead{Context} & \tabhead{D - BL} & \tabhead{Score} \\
+		\midrule
+		Banjo &
+		artefact \newline
+		flat solid \newline
+		\emph{membrane} & five or six-stringed instrument with a thin \emph{membrane} stretched over a frame or cavity as a resonator & 6 - 3 & 3	\\
+		&
+		body part \newline
+		system \newline
+		\emph{frame} \newline
+		(wrong synset)
+		& five or six-stringed instrument with a thin membrane stretched over a \emph{frame} or cavity as a resonator & 6 - 3 & 3	\\
+		Melodica &
+		device \newline 
+		\emph{keyboard} &
+		The \emph{keyboard} is usually two or three octaves long & 8 - 2 &	6
+		\\
+		\midrule
+		Harp &
+		construction \newline
+		area \newline
+		enclosure \newline
+		chamber \newline
+		cavity resonator \newline
+		\emph{soundboard} & The harp is a stringed musical instrument that has a number of individual strings running at an angle to its \emph{soundboard}; the strings are plucked with the fingers & 7 - 6 & 1	\\
+		Violin &
+		instrumentality \newline
+		implement \newline
+		stick \newline
+		\emph{bow} & and is most commonly played by drawing a \emph{bow} across its strings \newline & 7 - 4 & 3	\\
+		&
+		construction \newline
+		building \newline
+		house \newline
+		\emph{cottage} & 
+		as well as still greater numbers of mass-produced commercial "trade violins" coming from \emph{cottage} industries in places such as saxony & 7 - 4 & 3	
+		\\
+		\bottomrule\\
+	\end{tabular}
+\end{table}
 
 %----------------------------------------------------------------------------------------
 
