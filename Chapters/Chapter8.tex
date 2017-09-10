@@ -6,6 +6,16 @@
 
 %----------------------------------------------------------------------------------------
 
+\section{Data structure}
+The data structure I have used for the concepts in my solution is an array of synsets extracted from a WikiPedia article. These synsets are intended to work as having the relation of being a part of the concept. However sometimes the word has actually a different relation to the concept than being a part of it. For example in the concept saxophone, we have the synset woodwind. In this case the relation is that the saxophone is in the woodwind family. In fact of the 28 extracted synsets, only the synset mouthpiece made any sense as being a part of the saxophone. Although it is correct that the synset brass is a part of the saxophone, a better relation would be the brass is its material.
+Following this observation, it would make sense to use a data structure of a list predicates instead of words. Blending similar predicates might give more compatible suggestions. Extracting predicates from descriptions like an WikiPedia article would be a hard task. The problem could be simplified by requiring a human to input the predicates of each concept. This would restrict the usability and it would no longer be automatic, but it could be used to test the blending suggestion system with a more optimal input data structure. Finding the right synset of a predicate word will probably be harder than finding it in descriptions of text, since there are less words to define the context. The value of using a generalization by hypernyms approach may therefore be limited.
+
+%Bruke predikat/relasjonar som input? gjelder generaliseringsgreiene fortsatt? a saxophone is made of brass, a saxophone is made of alloy (men ikkje kva som helst) hmmm
+
+%The data structure I have used in my solution is an array of synsets extracted from a WikiPedia article. These synsets are intended to work as a predicate CONSIST_OF, that it is true that the concept consists of the synset. However sometimes the word is actually a different predicate than CONSIST_OF. For example in the concept saxophone, we have the synset of the instrument family woodwind. The relation between 
+
+%----------------------------------------------------------------------------------------
+
 \section{Theory}
 
 %----------------------------------------------------------------------------------------
