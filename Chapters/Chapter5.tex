@@ -11,12 +11,12 @@
 %----------------------------------------------------------------------------------------
 
 \section{Finding useful properties}
-In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find every property in the in the abstract texts representing each concept. First the algorithm tries to grammatically tag each word using the stanford part-of-speech tagger. Then it removes stopwords, common words that has little meaning and is not a property of the concept.
+In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find every property in the in the abstract texts representing each concept. First the algorithm tries to grammatically tag each word using the Stanford part-of-speech tagger. Then it removes stop-words, common words that has little meaning and is not a property of the concept.
 
 %----------------------------------------------------------------------------------------
 
 \section{Identifying noun phrases}
-When analysing a text for useful properties, some of them may be described by multiple words or a noun phrase. Take for example the two-worded property sustaining pedal, which is one of the pedals on a piano that lifts the dampers from the strings to let them continue vibrating. The word sustaining and pedal can not sufficiently describe the sustaining pedal on their own. The word sustaining depends on the word pedal, and it may not be clear if the word pedal is a sustaining pedal, a soft pedal or any other pedal unrelated to pianos. Therefore identifying noun phrases can lead to finding more useful properties in the text. We can identify noun phrases by using the stanford parser which takes a sentence and label the noun phrases with a NP tag. We can then remove unnecessary parts of the noun phrase such as determinants. If the noun phrase contains more than two words, we can recursively check the tail for other noun phrases. For example in the noun phrase \emph{electric five-string bass} there is also the noun phrase \emph{five-string bass}.
+When analysing a text for useful properties, some of them may be described by multiple words or a noun phrase. Take for example the two-worded property sustaining pedal, which is one of the pedals on a piano that lifts the dampers from the strings to let them continue vibrating. The word sustaining and pedal can not sufficiently describe the sustaining pedal on their own. The word sustaining depends on the word pedal, and it may not be clear if the word pedal is a sustaining pedal, a soft pedal or any other pedal unrelated to pianos. Therefore identifying noun phrases can lead to finding more useful properties in the text. We can identify noun phrases by using the Stanford parser which takes a sentence and label the noun phrases with a NP tag. We can then remove unnecessary parts of the noun phrase such as determinants. If the noun phrase contains more than two words, we can recursively check the tail for other noun phrases. For example in the noun phrase \emph{electric five-string bass} there is also the noun phrase \emph{five-string bass}.
 
 %----------------------------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ When analysing a text for useful properties, some of them may be described by mu
 WordNet provides a set of synsets for each word in the database, and each of these synsets has a unique definition. If we search for the word string, WordNet returns a set of 10 nouns and 7 verbs. %Nevne tagger her? Kan luke vekk nouns eller verbs
 
 \subsection{Stemming}
-Now we want to search WordNet for every word we found in the abstract. Sometimes WordNet gives no results because the word is in a different variant than the one in the WordNet database. We can use a stemmer algorithm to find the stem of the word. Often the stem is found in WordNet. This method is not always perfect though. Sometimes the stemmer can overstem, cutting too much of the word leading to a word that has a different meaning. %Example?
+Now we want to search WordNet for every word we found in the abstract. Sometimes WordNet gives no results because the word is in a different variant than the one in the WordNet database. We can use a stemmer algorithm to find the stem of the word. Often the stem is found in WordNet. This method is not always perfect though. Sometimes the stemmer can over-stem, cutting too much of the word leading to a word that has a different meaning. %Example?
 Pos tagging can avoid this.
 %Vurdere lemmatizer istaden då dei gir bedre meining? Updates = updat i stemmer. Lemmatizer bruker wordnet
 
