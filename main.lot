@@ -7,8 +7,8 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Examples of best suggestions when blending different pairs of instruments. Score is based on depth of word in tree (D) minus branch length from shared hypernym (BL)\relax }}{12}{table.caption.45}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Examples of best suggestions when blending different pairs of instruments. Score is based on depth of word in tree (D) minus branch length from shared hypernym (BL). Words are also penalized if they have a hypernym called \emph {abstract entity}, \emph {instrument} or \emph {individual}\relax }}{13}{table.caption.46}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {9.1}{\ignorespaces The effects of treatments X and Y on the four groups studied.\relax }}{24}{table.caption.75}
 \addvspace {10\p@ }
