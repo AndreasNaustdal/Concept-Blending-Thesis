@@ -106,6 +106,15 @@ Now the winning words were specific, but often abstract, being an instrument in 
 
 %----------------------------------------------------------------------------------------
 
+\section{Alternative blending category}
+\subsection{Sports}
+The algorithm was tested on the alternative blending category sports. The context words to help the scoring of synsets were: 'sport', 'athletic', 'ball', 'field', 'team', 'goal', 'rules', 'foul', 'score', 'player', 'referee', 'match', 'racket', 'club', 'net', 'skates', 'skis', 'helmet', 'pads', 'bat', 'pitch', 'court', 'tee', 'green', 'win', 'draw' and 'loss'.
+The penalized category was 'athletic game', as we would not want sports to be suggested, since it is the category itself.\\
+When performing the algorithm on \emph{soccer} and \emph{golf}, it suggested to move \emph{eleven} (squad) from \emph{soccer} to \emph{golf}, with a depth of 7 minus branch length 1, giving a score of 6. It suggested to move \emph{terrains} from \emph{golf} to \emph{soccer}, with a depth of 7 minus branch length 1, giving a score of 6. The results are interesting, since it can be interpreted as suggesting golf as a team sport of eleven players. Although golf is usually played as an individual sport, there are also a number of team tournaments. Playing soccer on uneven terrain is also an interesting idea that is not common but would be possible to organize, although it may not be an evenly balanced game. One reason for why the interpretations of these suggestions worked well may be because the relations to the other elements in the concept did not contradict. \emph{Terrains} in golf matched with the part \emph{field} in soccer through their common hypernym \emph{parcel}. By not going further up the generalizing chain, the more likely relations still work.
+
+
+%----------------------------------------------------------------------------------------
+
 \section{Word sense disambiguation in descriptions}
 
 %----------------------------------------------------------------------------------------
