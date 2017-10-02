@@ -8,6 +8,46 @@
 
 \section{Tools and technologies}
 
+The implementation was written in JavaScript using the frameworks AngularJS and Node.JS. The algorithm uses the following libraries from the Node Package Manager (NPM):
+\subsection{wordnet-magic}
+wordnet-magic is a Node.JS implementation of Princeton's WordNet lexical database for the English language. We use it to retrieve a set of synsets for each word in the description of the concepts. When the correct synsets are chosen, we also use it to retrieve all hypernyms of the synset in a tree structure where every ancestor is stored as synsets. 
+
+\subsection{stanford-simple-nlp}
+stanford-simple-nlp is a Node.JS wrapper for StanfordCoreNLP, a set of natural language processing tools. We use two of their tools, a sentence parser and a part-of-speech tagger. We use the sentence parser to identify noun phrases when we want to find synsets of elements that are represented in multiple words. We use the part-of-speech tagger to find the part of speech (POS) of every word in the concept description, categorizing them in categories like nouns and verbs. This is used to remove synsets of the wrong POS.
+
+%Data sources:
+%WikiPedia
+%My application lets you enter the name of a concept. It locates the corresponding WikiPedia article, copying its abstract which is the first paragraph of the article. This text is used as the basis for finding the properties of the concept using natural language processing tools and techniques.
+
+%Node libraries:
+%Natural Language Processing tools:
+%wordnet-magic
+%stanford-simple-nlp?
+%includes
+%Stanford Parser
+%Stanford Tagger
+%Pos Tagger
+
+%Javascript libraries:
+%Vis.js
+
+%Languages:
+%Javascript
+
+%Frameworks:
+%AngularJS
+%Express
+
+%Environments:
+
+%Node.JS
+%Sourcetree
+%Git
+%GitHub
+%TeXstudio
+%LaTeX
+%Trello
+
 %----------------------------------------------------------------------------------------
 
 \section{Iterations}
