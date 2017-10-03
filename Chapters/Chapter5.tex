@@ -44,13 +44,22 @@ An alternative method could be to use context synsets instead, specific synsets 
 
 %----------------------------------------------------------------------------------------
 
-\section{Creative strategy}
-\subsection{Generalization by hypernyms}
-Our approach to concept blending is inspired by the use of amalgams. When using WordNet we can easily generalize since we have access to each synsets tree of hypernyms. So if we consider the concepts \emph{a red French vehicle} and \emph{a German minivan}, we can find that \emph{French} and \emph{German} share the hypernym \emph{nation}, and minivan and vehicle share the common hypernym \emph{vehicle}.\\
+\section{Generic space}
+\subsection{Generalization using hypernyms}
+Our approach to concept blending is inspired by the use of amalgams. When using WordNet we can easily generalize since we have access to each synsets tree of hypernyms. So if we consider the concepts \emph{a red French vehicle} and \emph{a German minivan}, we can find that \emph{French} and \emph{German} share the hypernym \emph{nation}, and minivan and vehicle share the hypernym \emph{vehicle}.\\
 Our solution give score proportional to the speciality of the word and penalize proportionally to how general the generalization is, aiming for the least general generalization. In the example above, minivan should get a good score, since it is specific and the other concept is a vehicle, which makes not a too general generalization. However a minivan and SUV would give a better score, since they are both cars, which is less general than vehicle.
+\subsection{Finding matches}
+In order to provide good suggestions, we need to find pairs of properties that share a common hypernym. For instance a football field and a golf terrain share a common hypernym \emph{piece of land} which means they show a kind of commonality and could therefore be more compatible for blending than less related pairs. We take each subtree of shared hypernyms in the graph of the generic space and store them in a list which we can rank using a heuristic function.
 
 %----------------------------------------------------------------------------------------
 
-\section{Evaluation of blending}
+\section{Finding good blending suggestions}
+We came up with a solution where properties from each concept are sorted with a score that represents how well they are suited for blending. We were improving the algorithm by identifying patterns typical of good candidates in the tree structure of the property words and their hypernyms.
+\subsection{Depth of the word in hypernym tree}
+The first pattern we found was that words that have high generality are not useful. We want more specific words like \emph{drumstick} rather than general and vague words like \emph{object}. Therefore we gave points equal to the depth of the word in the tree.
+\subsection{Branch length to shared hypernyms}
+The second pattern we found was when properties of two concepts share a common root or hypernym, the length of the branch from this root seemed to be useful information. The longer the branch length, the worse were the candidate. Therefore we punished the word by subtracting points equal to the branch length.
+\subsection{Penalizing certain categories}
+Now the winning words were specific, but too often abstract, being an instrument in itself or a person (e.g. the inventor). Therefore we chose to punish the words significantly when being in the branch of \emph{abstract entities}, \emph{instruments} or \emph{individuals}. The resulting suggestions were then both physical and specific, which seems to be optimal for creating new instruments.
 
 %----------------------------------------------------------------------------------------
