@@ -6,15 +6,6 @@
 
 %----------------------------------------------------------------------------------------
 
-\section{Concept blending implementation}
-We came up with a solution where properties from each concept are sorted with a score that represents how well they are suited for blending. We were improving the algorithm by identifying patterns typical of good candidates in the tree structure of the property words and their hypernyms.
-\subsection{Depth of the word in hypernym tree}
-The first pattern we found was that words that have high generality are not useful. We want more specific words like \emph{drumstick} rather than general and vague words like \emph{object}. Therefore we gave points equal to the depth of the word in the tree.
-\subsection{Branch length to shared hypernyms}
-The second pattern we found was when properties of two concepts share a common root or hypernym, the length of the branch from this root seemed to be useful information. The longer the branch length, the worse were the candidate. Therefore we punished the word by subtracting points equal to the branch length.
-\subsection{Penalizing certain categories}
-Now the winning words were specific, but often abstract, being an instrument in itself or a person (e.g. the inventor). Therefore we chose to punish the words significantly when being in the branch of \emph{abstract entities}, \emph{instruments} or \emph{individuals}. The resulting suggestions were then both physical and specific, which seems to be optimal for creating new instruments.
-
 \begin{table}
 	\caption{Examples of best suggestions when blending different pairs of instruments. Score is based on depth of word in tree (D) minus branch length from shared hypernym (BL)}
 	\label{tab:topscoringexamples}
