@@ -7,32 +7,36 @@
 %----------------------------------------------------------------------------------------
 
 \section{Concept blending}
+My implementation of a concept blending algorithm consists of three steps. The first is retrieving the input data consisting of concept descriptions from a data source such as WikiPedia. The second step is creating the generic space, the structure deriving from both inputs. This is done by retrieving generalizations of the words from each concept, creating a tree structure of shared hypernyms. The third step is finding suggestions of elements to blend by using a heuristic function to rank the elements using patterns based on characteristics we have found in good blending examples.
 
 %----------------------------------------------------------------------------------------
 
-\section{Finding useful properties}
-In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find every property in the abstract texts representing each concept. First the algorithm tries to grammatically tag each word using the Stanford part-of-speech tagger. Then it removes stop-words, common words that has little meaning and is not a property of the concept.
+\section{Preparing input data}
+
+\subsection{Finding useful properties}
+We have two concepts that we want to blend. Descriptions retrieved from the WikiPedia page corresponding to the concepts is our raw input data.
+In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in the concept description texts that may represent the concept. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed we have tagged each word in the original sentences using the Stanford part-of-speech tagger. This data is useful when we are want to reduce the number of potential word meanings.
+%First the algorithm tries to grammatically tag each word using the Stanford part-of-speech tagger.
 
 %----------------------------------------------------------------------------------------
 
-\section{Identifying noun phrases}
-When analysing a text for useful properties, some of them may be described by multiple words or a noun phrase. Take for example the two-worded property sustaining pedal, which is one of the pedals on a piano that lifts the dampers from the strings to let them continue vibrating. The word sustaining and pedal can not sufficiently describe the sustaining pedal on their own. The word sustaining depends on the word pedal, and it may not be clear if the word pedal is a sustaining pedal, a soft pedal or any other pedal unrelated to pianos. Therefore identifying noun phrases can lead to finding more useful properties in the text. We can identify noun phrases by using the Stanford parser which takes a sentence and label the noun phrases with a NP tag. We can then remove unnecessary parts of the noun phrase such as determinants. If the noun phrase contains more than two words, we can recursively check the tail for other noun phrases. For example in the noun phrase \emph{electric five-string bass} there is also the noun phrase \emph{five-string bass}.
+\subsection{Identifying noun phrases}
+When analysing a text for useful properties, some of them may be described by multiple words or a noun phrase. Take for example the two-worded property \emph{sustaining pedal}, which is one of the pedals on a piano that lifts the dampers from the strings to let them continue vibrating. The word sustaining and pedal can not sufficiently describe the sustaining pedal on their own. The word sustaining depends on the word pedal, and it may not be clear if the word pedal is a sustaining pedal, a soft pedal or any other pedal unrelated to pianos. Therefore identifying noun phrases can lead to finding more useful properties in the text. We can identify noun phrases by using the Stanford parser which takes a sentence and label the noun phrases with a NP tag. We can then remove unnecessary parts of the noun phrase such as determinants. If the noun phrase contains more than two words, we can recursively check the tail for other noun phrases. For example in the noun phrase \emph{electric five-string bass} there is also the noun phrase \emph{five-string bass}.
 
 %----------------------------------------------------------------------------------------
 
-\section{WordNet database}
-WordNet provides a set of synsets for each word in the database, and each of these synsets has a unique definition. If we search for the word string, WordNet returns a set of 10 nouns and 7 verbs. %Nevne tagger her? Kan luke vekk nouns eller verbs
+\subsection{WordNet database}
+WordNet provides a set of synsets for each word in the database, and each of these synsets has a unique definition. If we search for the word \emph{string}, WordNet returns a set of 10 nouns and 7 verbs. We want to search WordNet for every word we found in the abstract and find the correct synsets so that we have a list of unambiguous properties representing the concept. WordNet also store the POS of a word, so we can use the POS tagger data to remove every synset of the wrong POS. For instance if we have tagged \emph{piano} as a noun, we can remove the adjective \emph{piano} which means soft.
+%Nevne tagger her? Kan luke vekk nouns eller verbs
 
 \subsection{Stemming}
-Now we want to search WordNet for every word we found in the abstract. Sometimes WordNet gives no results because the word is in a different variant than the one in the WordNet database. We can use a stemmer algorithm to find the stem of the word. Often the stem is found in WordNet. This method is not always perfect though. Sometimes the stemmer can over-stem, cutting too much of the word leading to a word that has a different meaning. %Example?
-Pos tagging can avoid this.
+Sometimes WordNet gives no results because the word is in a different variant than the one in the WordNet database. For instance if the word is \emph{guitars}, it does not match \emph{guitar} in the database. To return \emph{guitar}, we can use a stemming algorithm to find the stem of the word. Often the stem is found in WordNet. This method is not always perfect though. Sometimes the stemmer can over-stem, cutting too much of the word leading to a word that has a different meaning. %Example?
+%Pos tagging can avoid this.
 %Vurdere lemmatizer istaden då dei gir bedre meining? Updates = updat i stemmer. Lemmatizer bruker wordnet
 
 %----------------------------------------------------------------------------------------
 
-\section{Word sense disambiguation in descriptions}
 \subsection{Word sense disambiguation}
-\subsection{Scoring of synsets}
 Let's say we want to find the synset corresponding to the bow used to play stringed instruments. How can we do this? One way is to count the number of words (excluding stop-words) in each synset definition which also exists in the concept text. The first definition of bow is \emph{a knot with two loops and loose ends; used to tie shoelaces}. None of these words are in the description of a guitar, therefore we give it a score of 0. The next definition is \emph{a slightly curved piece of resilient wood with taut horsehair strands; used in playing certain stringed instruments}. The words wood and instruments is found in the violin abstract, therefore we give it a score of 2. We select the synset that has the highest score. This approach is heuristic, it will not always find the correct synset.
 To improve the accuracy in the category musical instruments, we added musical context words that also score one point when found in the definition. These words are 'music', 'instrument', 'tone', 'tones', 'sounds', 'sounding', 'rhythm', 'melody', 'drum', 'flute', 'percussion', 'idiophone',
 'bass', 'baritone', 'tenor', 'alto', 'soprano', 'note', 'pitch', 'audio', 'auditory', 'tune', 'tuning' and 'acoustic'.
