@@ -43,6 +43,41 @@ To improve the accuracy in the category musical instruments, we added musical co
 'bass', 'baritone', 'tenor', 'alto', 'soprano', 'note', 'pitch', 'audio', 'auditory', 'tune', 'tuning' and 'acoustic'.
 An alternative method could be to use context synsets instead, specific synsets that were automatically given an extra point for being relevant to the category.
 
+For every word that has multiple possible meanings we run the following algorithm. The input is each definition that we have returned from the word search in WordNet. We remove the stopwords in the definitions to reduce irrelevant words. We also need all the words in abstract and the context words, since we want to look for these in each definition. We call these words \textit{scoring words}.
+
+\begin{algorithm}
+	\caption{Get the definition which is most likely to fit the word}\label{euclid}
+	\begin{algorithmic}[1]
+		\Require ambigousWord,
+		definitions,
+		scoringWords
+		\Ensure highest scoring definition
+		\Procedure{GetMostLikelyDefinition}{}
+		\For {\textbf{each} \textit{definition} in \textit{definitions}}
+		\State $\textit{definitionScore} \gets 0$
+		\For {\textbf{each} \textit{definitionWord} in \textit{definition}}
+		\For {\textbf{each} \textit{scoringWord} in \textit{scoringWords}}
+		\If {\textit{scoringWord} matches \textit{ambigousWord}}
+		\State \textbf{continue}
+		\EndIf
+		\If {\textit{scoringWord} is the first part of \textit{definitionWord}
+		\textbf{or} \textit{definitionWord} is the first part of \textit{scoringWord}}
+		\State ${\textit{definitionScore} \gets {\textit{definitionScore}+1}}$
+		\EndIf
+		\EndFor
+		\EndFor
+		\If {$\textit{definitionScore} > \textit{definitionMaxScore}$}
+		\State ${\textit{definitionMaxScore}} \gets {\textit{definitionScore}}$
+		\State ${\textit{topDefinition}} \gets {\textit{definition}}$
+		\EndIf
+		\EndFor
+		\If {there is no \textit{topDefinition}}
+		\Return null
+		\EndIf
+		\Return \textit{topDefinition}
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
 %----------------------------------------------------------------------------------------
 
 \section{Generic space}
