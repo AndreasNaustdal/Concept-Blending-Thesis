@@ -45,9 +45,11 @@ Creativity happens in different ways. Sometimes a new invention is found because
 %The established literature seems to branch into different methods. Examples of creative tasks include invention, problem solving and art. Our approach will follow the theory of conceptual blending.
 
 \parencite{busse1980theories} lists seven categories of creativity theories: psychoanalytic, gestalt, association, perceptual, humanistic, cognitive-developmental and composite theories.
-They also draw a line between convergent and divergent problems that the theories are applicable to. The difference is convergent problems have one or few right answers while divergent has many possible solutions. One end is a more goal-driven and problem-solving type of creativity and the other end includes more open-ended activities such as art and conceiving novel ideas.
+They also draw a line between convergent and divergent problems that the theories are applicable to. The difference there is convergent problems have one or few right answers while divergent has many possible solutions. One end is a more goal-driven and problem-solving type of creativity and the other end includes more open-ended activities such as art and conceiving novel ideas.
 
 In the association theories, creativity is thought to come from associations. Arthur Koestler combines associationism and psychoanalytic concepts in what he called the \emph{bisociation} theory \parencite{busse1980theories}. In bisociation, two independent matrices of ideas are combined, guided by subconscious processes. Bisociation inspired the theory of conceptual blending by Gilles Fauconnier and Mark Turner \parencite{fauconnier2002way}.
+
+\parencite{boden2004creative} lists three types of creativity: exploratory, transformational, and combinatorial. Combinatorial creativity combines familiar concepts in a novel way, going outside known rules to create new ideas. Conceptual blending has been used in efforts to create computational approaches to combinatorial creativity.
 
 %----------------------------------------------------------------------------------------
 
@@ -58,6 +60,8 @@ In the association theories, creativity is thought to come from associations. Ar
 
 \section{Conceptual blending}
 Conceptual blending is a theory proposed by Gilles Fauconnier and Mark Turner. It works by projecting structure from input mental spaces to a separate, "blended" mental space. \parencite{fauconnier1998conceptual}
+The mental spaces contain structured elements and are interconnected to model dynamic mappings in thought and language.
+Conceptual blending can be explained using a model of four mental spaces consisting of two input spaces, the generic space and blend space. Each input space is a partial model of the corresponding concept. The generic space contains what the input spaces have in common. Elements from the generic space are mapped onto the blend space, and may be blended with elements from the input spaces that are not mapped to the generic space.
 %According to \parencite{reference3}: “concept blending constitutes a cognitive process which allows for the combination of certain elements (and their relations) from originally distinct conceptual spaces into a new unified space combining these previously separate elements and allowing the performance of reasoning and inference over the combination.”
 \begin{figure}
 \centering
@@ -65,6 +69,13 @@ Conceptual blending is a theory proposed by Gilles Fauconnier and Mark Turner. I
 \caption{Conceptual blending model showing mental spaces (circles) and mappings of counterpart connections (solid lines) \parencite{fauconnier1998conceptualfigure}}
 \label{fig:concept-blending-firkant}
 \end{figure}
+%----------------------------------------------------------------------------------------
+
+\section{Computational approaches}
+Efforts have been made to create a computational algorithm using the conceptual blending theory.
+\parencite{li2012goal} presents an algorithm with an emphasis on context-induced goals to prune the search space. %They also distinguish between two different artifacts of conceptual blending, semiotic expressions and standalone concepts.
+\parencite{martinez2011towards} uses a logic-based approach not only in a mathematical setting but also in disparate problems such as rationality puzzles and noun-noun combinations.
+\parencite{besold2015generalize} uses a similar logic-based approach but using amalgams developed by \parencite{ontanon2010amalgams}.
 
 
 %----------------------------------------------------------------------------------------
@@ -87,8 +98,8 @@ Conceptual blending is a theory proposed by Gilles Fauconnier and Mark Turner. I
 
 %----------------------------------------------------------------------------------------
 
-\subsection{Amalgam}
-One approach to conceptual blending is the use of amalgams. \parencite{Reference4}
+\subsection{Amalgams}
+One approach to conceptual blending is the use of amalgams. \parencite{ontanon2010amalgams}
 An amalgam uses generalization of two concepts to make them compatible for blending through unification of the two generalizations. When parts of the concepts share a similar generalization, but are different, they are not unifiable. But they can unify with the \emph{least general generalization}. To make the concepts unifiable, we can therefore generalize corresponding pairs of parts between the concepts. For instance, when creating an amalgam of a \emph{red French vehicle} and a \emph{German minivan}, we can make them unifiable by generalizing the first to a \emph{red European vehicle}. When unifying we get a \emph{red German minivan}. Or if we generalize the second to a \emph{European minivan}, we can unify to a \emph{red French minivan}.
 %An amalgam of two descriptions is a new description that contains parts from these two descriptions. (sitat frå Besold eller Ontanón and Plaza 2010?)
 
