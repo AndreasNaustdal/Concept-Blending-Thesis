@@ -8,6 +8,20 @@
 
 \section{Tools and technologies}
 
+\subsection{Natural Language Processing}
+Natural language processing (NLP) is a field in computer science where computers interact with and process human natural language. We use NLP tools such as WordNet and Stanford coreNLP to process the concept descriptions into input spaces for blending.
+
+\subsection{WikiPedia}
+WikiPedia is a large online encyclopedia, consisting of over 5 million english articles. We use it as a data source for the concept descriptions, by scraping the first section or abstract of the article.
+
+\subsection{WordNet}
+WordNet contains a large group of English words that are linked together with its synonym group called synset. Each synset has a distinct meaning, so a word that can mean different things has one synset for each meaning. This is useful for preparing the data so we do not include two elements that mean the same. WordNet also provides antonyms of a word, which is useful to detect contradictions in the blended concept.
+
+\subsection{Stanford coreNLP toolkit}
+The Stanford coreNLP toolkit is widely used for natural language analysis. It includes tools for tokenization, sentence splitting, part-of-speech tagging, morphological analysis, named entity recognition, syntactic tagging, coreference resolution and more. \parencite{manning-EtAl:2014:P14-5}
+
+\subsection{JavaScript Frameworks and Libraries}
+
 The implementation was written in JavaScript using the frameworks AngularJS and Node.JS. The algorithm uses the following libraries from the Node Package Manager (NPM):
 \subsection{wordnet-magic}
 wordnet-magic is a Node.JS implementation of Princeton's WordNet lexical database for the English language. We use it to retrieve a set of synsets for each word in the description of the concepts. When the correct synsets are chosen, we also use it to retrieve all hypernyms of the synset in a tree structure where every ancestor is stored as synsets. 
