@@ -142,8 +142,72 @@ For every word that has multiple possible meanings we run the following algorith
 \subsection{Generalization using hypernyms}
 Our approach to concept blending is inspired by the use of amalgams. When using WordNet we can easily generalize since we have access to each synsets tree of hypernyms. So if we consider the concepts \emph{a red French vehicle} and \emph{a German minivan}, we can find that \emph{French} and \emph{German} share the hypernym \emph{nation}, and minivan and vehicle share the hypernym \emph{vehicle}.\\
 Our solution give score proportional to the speciality of the word and penalize proportionally to how general the generalization is, aiming for the least general generalization. In the example above, minivan should get a good score, since it is specific and the other concept is a vehicle, which makes not a too general generalization. However a minivan and SUV would give a better score, since they are both cars, which is less general than vehicle.
+
+\begin{algorithm}
+	\caption{Get all synsets in the generic space between two concepts}\label{euclid}
+	\begin{algorithmic}[1]
+		\Require sourceConcept,
+		targetConcept
+		\Ensure highest scoring definition
+		\Procedure{GetGenericSpace}{}
+		\For {\textbf{each} \textit{property} in \textit{sourceConcept.properties}}
+		\State ${\textit{sourceSynsets} \gets {\textit{sourceSynsets} + \textit{property}}}$
+		\For {\textbf{each} \textit{hypernym} in \textit{property.hypernyms}}
+		\State ${\textit{sourceSynsets} \gets {\textit{sourceSynsets} + \textit{hypernym}}}$
+		\EndFor
+		\EndFor
+		
+		\For {\textbf{each} \textit{property} in \textit{targetConcept.properties}}
+		\State ${\textit{targetSynsets} \gets {\textit{targetSynsets} + \textit{property}}}$
+		\For {\textbf{each} \textit{hypernym} in \textit{property.hypernyms}}
+		\State ${\textit{targetSynsets} \gets {\textit{targetSynsets} + \textit{hypernym}}}$
+		\EndFor
+		\EndFor
+		\State ${\textit{sourceSynsets} \gets {removeDuplicates(\textit{sourceSynsets})}}$
+		\State ${\textit{targetSynsets} \gets {removeDuplicates(\textit{targetSynsets})}}$
+		\State \Return ${SetOperations.intersection(\textit{sourceSynsets}, \textit{targetSynsets})}$
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
 \subsection{Finding matches}
 In order to provide good suggestions, we need to find pairs of properties that share a common hypernym. For instance a football field and a golf terrain share a common hypernym \emph{piece of land} which means they show a kind of commonality and could therefore be more compatible for blending than less related pairs. We take each subtree of shared hypernyms in the graph of the generic space and store them in a list which we can rank using a heuristic function.
+
+\begin{algorithm}
+	\caption{Perform creative strategy by ranking a concepts subtrees by finding a pair in the other concept with the highest compability, defined by the expression Depth - BranchLength - Penalty}\label{euclid}
+	\begin{algorithmic}[1]
+		\Require properties,
+		concept,
+		genericSpace,
+		penaltyCategories,
+		penaltyPoints
+		\Ensure a list of branches ranked by their blending compatibility score
+		\Procedure{RankCompatibleBlendingSuggestions}{}
+		\For {\textbf{each} \textit{property} in \textit{properties}}
+		\If {$\textit{property.name} = \textit{concept.name}$
+		\\\qquad\qquad\textbf{or} \textit{property} has not been disambiguated
+		\\\qquad\qquad\textbf{or} \textit{property} is in \textit{genericTree}}
+		\State \textbf{continue}
+		\EndIf
+		\For {\textit{i} = 0 to \textit{property.hypernyms.length}}
+		\If {\textit{property.hypernyms[i]} is not in \textit{genericSpace}}
+		\State {\textbf{continue}}
+		\EndIf
+		\State ${\textit{subtree.branch} \gets {[\textit{property}] \text{ concatinated with } \textit{property.hypernyms[0:i]}}}$
+		\State ${\textit{depth} \gets {\textit{property.hypernyms.length} - i}}$
+		\State ${\textit{branchLength} \gets {\textit{subtree.branch.length}}}$
+		\If {\textit{subtree.branch} has an element in \textit{penaltyCategories}}
+		\State ${\textit{penalty} \gets \textit{penaltyPoints}}$
+		\EndIf
+		\State ${\textit{subtree.compatibility} \gets {\textit{depth} - \textit{branchLength} - \textit{penalty}}}$
+		\State ${\textit{subtrees} \gets {\textit{subtrees} \text{ concatinated with } \textit{subtree}}}$
+		\State {\textbf{break} inner for loop}
+		\EndFor
+		\EndFor
+		\State \Return \textit{subtrees} \textbf{sorted} by \textit{subtree.compability} in descending order
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
 
 %----------------------------------------------------------------------------------------
 
