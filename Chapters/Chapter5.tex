@@ -14,9 +14,66 @@ My implementation of a concept blending algorithm consists of three steps. The f
 \section{Preparing input data}
 
 \subsection{Finding useful properties}
-We have two concepts that we want to blend. Descriptions retrieved from the WikiPedia page corresponding to the concepts is our raw input data.
-In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in the concept description texts that may represent the concept. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed we have tagged each word in the original sentences using the Stanford part-of-speech tagger. This data is useful when we are want to reduce the number of potential word meanings.
+We have two concepts that we want to blend, for example Cajón and Clapsticks.
+We can retrieve the abstracts using a HTTP call to the wikipedia API:
+
+\noindent\fbox{
+	\parbox{\textwidth}{
+		\url{http://en.wikipedia.org/w/api.php?action=parse&page=conceptName&prop=text&section=0&format=json&redirects=1&callback=?}
+	}
+}
+The parameter ConceptName stands for the name of our concept. By extracting the first <p> paragraph element in the returned JSON string, we can retrieve the raw abstract. For Cajón this abstract is:
+ 
+\noindent\fbox{
+	\parbox{\textwidth}{
+		A cajón is nominally a box-shaped percussion instrument originally from Peru, played by slapping the front or rear faces with the hands, fingers, or sometimes various implements such as brushes, mallets, or sticks.
+	}
+}
+
+In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in abstract that may represent the concept. To make this easier we need to process the abstract with the steps seen in \textbf{procedure 1}. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed we send the original abstract to the Stanford POS tagger to have each word tagged. This data is useful when we want to reduce the number of potential word meanings in the disambiguation step.
+The abstract of cajón after processing and removal of stopwords and duplicate words:
+\noindent\fbox{
+	\parbox{\textwidth}{
+		cajón nominally box-shaped percussion instrument originally peru played slapping front rear faces hands fingers sometimes various implements brushes mallets sticks
+	}
+}
 %First the algorithm tries to grammatically tag each word using the Stanford part-of-speech tagger.
+
+\begin{algorithm}
+	\caption{Process a WikiPedia abstract}\label{euclid}
+	\begin{algorithmic}[1]
+		\Require wikipediaAbstract,
+		\Ensure processedWikipediaAbstract, wikipediaAbstractWithoutStopwords
+		\Procedure{processWikipediaAbstract}{}
+		\For {\textit{wikipediaAbstract}}
+		\State Remove extra newline
+		\State Replace line breaks with whitespaces
+		\State Split words separated by forward slash
+		\State Remove \&\#160; to avoid the number 160 appearing in the text
+		\State Remove [] and the containing text (e.g reference tags)
+		\State Remove paranthesis and the containing text
+		\State Remove forward-slash and the containing text (e.g phonetics)
+		\State Remove - at the end of words
+		\State Remove d' at the start of french words
+		\State Remove l' at the start of french words
+		\EndFor
+		\State $\textit{wikipediaAbstractWithoutStopwords} \gets \textit{wikipediaAbstract}$
+		\For {\textit{wikipediaAbstractWithoutStopwords}}
+		\State Remove 's at the end of words
+		\State Remove all apostrophes
+		%\State Remove symbols \texttt{[!@#$%^&*(){}?<>+:;",.♭♯£€¤=\`_~}
+		\State Remove symbols $!@\#\$\%\&*(){}?<>+\hat{}:;",.'\flat\sharp=\textbackslash\grave{}\_\tilde{}\pounds$\texteuro\textcurrency
+		\State Remove words that has numbers in it
+		\State Change to lower case (WordNet requires lowercase string)
+		
+		\State Remove stopwords
+		\State Remove duplicate words
+		\EndFor
+		
+		\State \Return [\textit{wikipediaAbstract},  \textit{wikipediaAbstractWithoutStopwords}]
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
 
 %----------------------------------------------------------------------------------------
 
