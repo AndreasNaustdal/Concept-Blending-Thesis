@@ -111,9 +111,20 @@ We will remove duplicates of words that are in both lists so that each word is e
 	\parbox{\textwidth}{music, instrument, bass, pitch}
 }
 
-To add score to a definition, we count the number of words (excluding stop-words) in each synset definition which also exists in the \emph{scoring words}. The first definition of \emph{bow} is \emph{a knot with two loops and loose ends; used to tie shoelaces}. None of these words are in the \emph{scoring words} of a cello, therefore we give it a score of 0. The next definition is \emph{a slightly curved piece of resilient wood with taut horsehair strands; used in playing certain stringed instruments}. One word, instrument, is found in the cello scoring words, therefore we give it a score of 1. We select the synset that has the highest score, which in this case was the correct bow definition. This approach is heuristic and will not always find the correct synset.
+To add score to a definition, we count the number of words (excluding stop-words) in each synset definition which also exists in the \emph{scoring words}. The first definition of \emph{bow} is:
 
-An alternative method could be to use \emph{context synsets}, specific synsets that  automatically give an extra point for being relevant to the category. For example the musical synset of the word \emph{instrument} would automatically get an extra point over non-musical synsets of instruments like the more general synset \emph{device}.
+\noindent\fbox{\parbox{\textwidth}{
+		a knot with two loops and loose ends; used to tie shoelaces
+}}
+None of these words are in the \emph{scoring words} of a cello, therefore we give it a score of 0. The next definition is:
+
+\noindent\fbox{\parbox{\textwidth}{
+		a slightly curved piece of resilient wood with taut horsehair strands; used in playing certain stringed instruments
+}}
+One word, instrument, is found in the cello scoring words, therefore we give it a score of 1. We select the synset that has the highest score, which in this case was the correct bow definition. This approach is heuristic and will not always find the correct synset.
+Sometimes the word is similar to, but not equal to the scoring word. For example if the definition had the word \emph{bow}, and scoring words had \emph{bowed}, we would not find it. One way to match these would be to search for \emph{bow} in the start of the string \emph{bowed}, and also search for \emph{bowed} in the start of \emph{bow}. Now we would get matches when the scoring word starts with the definition word and vice versa. An alternative way could be to use a stemming algorithm on the words and see if either the scoring word or scoring word stem matches the definition word or definition word stem.
+
+An alternative additional scoring system could be to use \emph{context synsets}, specific synsets that automatically give an extra point for being relevant to the category. For example the musical synset of the word \emph{instrument} would automatically get an extra point over non-musical synsets of instruments like the more general synset \emph{device}.
 
 \begin{algorithm}
 	\caption{Get the definition which is most likely to fit the word}\label{euclid}
