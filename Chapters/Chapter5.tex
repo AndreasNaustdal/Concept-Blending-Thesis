@@ -164,8 +164,11 @@ An alternative additional scoring system could be to use \emph{context synsets},
 
 \section{Generic space}
 \subsection{Generalization using hypernyms}
-Our approach to concept blending is inspired by the use of amalgams. When using WordNet we can easily generalize since we have access to each synsets tree of hypernyms. So if we consider the concepts \emph{a red French vehicle} and \emph{a German minivan}, we can find that \emph{French} and \emph{German} share the hypernym \emph{nation}, and minivan and vehicle share the hypernym \emph{vehicle}.\\
+Our approach to concept blending is inspired by the use of amalgams. When using WordNet we can easily generalize since we have access to each synsets tree of hypernyms. So if we consider the concepts \emph{a red French vehicle} and \emph{a German minivan}, we can find that \emph{French} and \emph{German} share the hypernym \emph{nation}, and minivan and vehicle share the hypernym \emph{vehicle}.
+
 Our solution give score proportional to the speciality of the word and penalize proportionally to how general the generalization is, aiming for the least general generalization. In the example above, minivan should get a good score, since it is specific and the other concept is a vehicle, which makes not a too general generalization. However a minivan and SUV would give a better score, since they are both cars, which is less general than vehicle.
+
+The algorithm we use to create the generic space between is shown below as \textbf{procedure 3}. We can pass \emph{Cajón} as the source concept and \emph{Clapsticks} as the target concept. After processing the abstracts and finding the most likely synsets of each property, we can use WordNet to retrieve a list of every hypernym ancestor of each synset, which will go from the least general to the most general generalization. They can be accessed from the array \emph{concept.property.hypernyms}. To create the generic space, we simply retrieve all synsets and hypernymsynsets in each concept and use a intersection set operation to keep what we find in both concepts.
 
 \begin{algorithm}
 	\caption{Get all synsets in the generic space between two concepts}\label{euclid}
