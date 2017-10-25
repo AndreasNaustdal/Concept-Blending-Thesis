@@ -30,7 +30,7 @@ The parameter ConceptName stands for the name of our concept. By extracting the 
 	}
 }
 
-In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in abstract that may represent the concept. To make this easier we need to process the abstract with the steps seen in \textbf{procedure 1}. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed we send the original abstract to the Stanford POS tagger to have each word tagged. This data is useful when we want to reduce the number of potential word meanings in the disambiguation step.
+In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in abstract that may represent the concept. To be properly able to query WordNet with words from the text we need to process the abstract with the steps seen in \textbf{procedure 1}. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed we send the original abstract to the Stanford POS tagger to have each word tagged. This data is useful when we want to reduce the number of potential word meanings in the disambiguation step.
 The abstract of cajón after processing and removal of stopwords and duplicate words:
 \noindent\fbox{
 	\parbox{\textwidth}{
@@ -40,7 +40,7 @@ The abstract of cajón after processing and removal of stopwords and duplicate w
 %First the algorithm tries to grammatically tag each word using the Stanford part-of-speech tagger.
 
 \begin{algorithm}
-	\caption{Process a WikiPedia abstract}\label{euclid}
+	\caption{Process a WikiPedia abstract to prepare words for WordNet queries}\label{euclid}
 	\begin{algorithmic}[1]
 		\Require wikipediaAbstract,
 		\Ensure processedWikipediaAbstract, wikipediaAbstractWithoutStopwords
@@ -103,7 +103,7 @@ The \emph{scoring words} combines these with the words of the \emph{cello} abstr
 \noindent\fbox{
 	\parbox{\textwidth}{
 		cello, violoncello, bowed, plucked, string, instrument, four, strings, tuned, perfect, fifths, low, octave, lower, viola, violin, family, musical, instruments, includes, double, bass, solo, chamber, music, ensembles, orchestras, section, symphony, types, rock, bands, second-largest, lowest, modern, orchestra, largest, pitch
-		}
+	}
 }
 We will remove duplicates of words that are in both lists so that each word is equally influential on the scoring. Duplicate words are:
 
