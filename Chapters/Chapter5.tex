@@ -22,7 +22,7 @@ We can retrieve the abstracts using a HTTP call to the wikipedia API:
 		\url{http://en.wikipedia.org/w/api.php?action=parse&page=conceptName&prop=text&section=0&format=json&redirects=1&callback=?}
 	}
 }
-The parameter ConceptName stands for the name of our concept. By extracting the first <p> paragraph element in the returned JSON string, we can retrieve the raw abstract. For Cajón this abstract is:
+The parameter ConceptName stands for the name of our concept. By extracting the first paragraph element (<p>) in the returned JSON string, we can retrieve the raw abstract. For Cajón this abstract is:
  
 \noindent\fbox{
 	\parbox{\textwidth}{
