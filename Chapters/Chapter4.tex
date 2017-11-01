@@ -76,27 +76,53 @@ A simplifed overview of the application, its components and data flow can be see
 \label{fig:application-structure}
 \end{figure}
 
+\subsection{Stemming algorithm}
+The application send each word of the WikiPedia abstract without stopwords to the stemming algorithm to get eventual stems of the word. WordNet does not recognize all forms of the word, so by stemming we can get access to more synsets.
+
+\subsection{WordNet}
+The application use WordNet in to ways when retrieving language data:
+\begin{itemize}
+\item Retrieving synsets by querying the WordNet database with words and word stems to get the synsets of each word.
+\item Retrieving hypernyms by querying the WordNet database with synsets to get all hypernyms of that synset.
+\end{itemize}
+
+\subsection{POS tagger}
+The application sends the whole WikiPedia abstract of each concept as a string into the POS tagger, to retrieve an two-dimensional array where the first column contain the words and the second contain the part-of-speech tag.
+
+\subsection{Get most likely definition}
+The application use the \emph{get most likely definition} method as a heuristic function to find the synset that most likely carry the correct definition of the word. The method takes the following input:
+\begin{itemize}
+	\item The ambigous word in question
+	\item The different definitions of the word
+	\item A list of scoring words, which is made up of the abstract words and a set of words relating to the context (musical instruments)
+\end{itemize}
+
+
 \subsection{Concept}
 We have two concepts we want to blend. Each concept has the following data:
-- A name which we will use to find the corresponding WikiPedia article for
-- A WikiPedia abstract
-- The WikiPedia abstract without stopwords
-- A list of properties.
+\begin{itemize}
+\item A name which we will use to find the corresponding WikiPedia article for
+\item A WikiPedia abstract
+\item The WikiPedia abstract without stopwords
+\item A list of properties.
+\end{itemize}
 
 \subsection{Wikipedia Abstract}
 The WikiPedia abstract contains a text with the description of the concept.
 
 \subsection{Properties}
 Each property has the following data:
-- The original word
-- A list containing the original word and eventual stems found by the stemming algorithm.
-- The part-of-speech such as noun, verb or adjective which have been tagged by the POS tagger
-- A list of synsets, any unique meaning that the word or the stem of the word may have. Can be pruned to store only synsets of the same part-of-speech that the POS tagger found.
-- A reference to the synset of the most likely definition found by the \emph{get most likely definition} method
-- A list of hypernyms, from the most specific to the most general, starting with the direct ancestor of the synset.
+\begin{itemize}
+\item The original word
+\item A list containing the original word and eventual stems found by the stemming algorithm.
+\item The part-of-speech such as noun, verb or adjective which have been tagged by the POS tagger
+\item A list of synsets, any unique meaning that the word or the stem of the word may have. Can be pruned to store only synsets of the same part-of-speech that the POS tagger found.
+\item A reference to the synset of the most likely definition found by the \emph{get most likely definition} method
+\item A list of hypernyms, from the most specific to the most general, starting with the direct ancestor of the synset.
+\end{itemize}
 
 \subsection{Generic Space}
-A list of synsets containing synsets and hypernym synsets that exist in both concepts.
+The generic space contains a list of synsets and hypernym synsets that exist in both concepts.
 
 \subsection{Subtrees}
 Each concept has a list of subtrees containing unique properties and their hypernyms that are subsuming but are not themselves in the generic space. They are given a compatibility score by the \emph{rank compatible blending suggestions} method. The subtree is assigned a depth, a branch length and a penalty value. The depth value contains its least general hypernym in the generic space.
