@@ -10,7 +10,7 @@
 In this thesis we have developed an algorithm which provide suggestions of which properties that are most compatible for blending between two concepts of a domain such as musical instruments. To achieve this we have used natural language processing tools such as Stanford coreNLP and WordNet.
 
 \subsection{WikiPedia}
-WikiPedia is a large online encyclopedia, consisting of over 5 million english articles. We use it as a data source for the concept descriptions, by scraping the first section or abstract of the article.
+WikiPedia is a large online encyclopedia, consisting of over 5 million english articles. We use it as a data source for the concept descriptions. We query WikiPedia for the concept or instrument we want to blend. Then we take the first section in the article, which we refer to as the abstract. The results depend on the quality of this abstract. Sometimes it includes irrelevant words, for example cultural references such as the inventor or where the instrument is produced.
 
 \subsection{WordNet}
 WordNet contains a large group of English words that are linked together with its synonym group called synset. Each synset has a distinct meaning, so a word that can mean different things has one synset for each meaning. This is useful for preparing the data so we do not include two elements that mean the same. WordNet also provides antonyms of a word, which is useful to detect contradictions in the blended concept.
