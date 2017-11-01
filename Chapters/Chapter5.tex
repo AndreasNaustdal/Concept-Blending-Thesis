@@ -7,13 +7,17 @@
 %----------------------------------------------------------------------------------------
 
 \section{Concept blending}
-My implementation of a concept blending algorithm consists of three steps. The first is retrieving the input data consisting of concept descriptions from a data source such as WikiPedia. The second step is creating the generic space, the structure deriving from both inputs. This is done by retrieving generalizations of the words from each concept, creating a tree structure of shared hypernyms. The third step is finding suggestions of elements to blend by using a heuristic function to rank the elements using patterns based on characteristics we have found in good blending examples.
+My implementation of a concept blending algorithm consists of three steps. The first is retrieving the input data consisting of concept descriptions from a data source such as WikiPedia. The second step is creating the generic space, the structure deriving from both inputs. This is done by retrieving generalizations of the nouns from each concept, creating a tree structure of shared hypernyms. The third step is finding suggestions of elements to blend by using a heuristic function to rank the elements using patterns based on characteristics we have found in good blending examples.
 
 %----------------------------------------------------------------------------------------
 
 \section{Preparing input data}
 
 \subsection{Finding useful properties}
+In our approach to concept blending, the elements that make the input spaces are nouns from the WikiPedia description. The reason for this is that we can generalize the nouns by retrieving their hypernyms using WordNet. The reason we focus on nouns is that they are more likely elements of the concept rather than verbs, adjectives or any other part-of-speech. Verbs are actions, occurrences or state of beings, rather than elements. Although verbs can be generalized with hypernyms as well, we can not compare the generality of verbs and nouns, since verbs usually have fewer hypernyms than nouns. The characteristics we look for are based on the distances in the hypernym tree. The distances we look for are the number of hypernyms between the word, the least general shared hypernym and the most general shared hypernym. If the compatibility score of the blending suggestions is based on how specialized the word is, it will favour nouns over verbs, since in WordNet verbs usually have fewer hypernyms than nouns, and it would not make sense to compare verbs and nouns this way.
+
+An optimal solution may retrieve the properties and all the relations between the words to create a more complete representation of the concept, and not just elements. We have only focused on properties alone since we want to validate the use of generalization in conceptual blending. For further research on a more complete algorithm for conceptual blending, it may be possible to further elaborate the representation, keeping the original relations between the elements from the input spaces to the blend space. It could also be possible to generalize the relations using WordNet, but research should be done on how these relations will be scored and blended.
+
 We have two concepts that we want to blend, for example Cajón and Clapsticks.
 We can retrieve the abstracts using a HTTP call to the wikipedia API:
 
