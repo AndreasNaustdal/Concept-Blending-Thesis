@@ -76,5 +76,33 @@ A simplifed overview of the application, its components and data flow can be see
 \label{fig:application-structure}
 \end{figure}
 
+\subsection{Concept}
+We have two concepts we want to blend. Each concept has the following data:
+- A name which we will use to find the corresponding WikiPedia article for
+- A WikiPedia abstract
+- The WikiPedia abstract without stopwords
+- A list of properties.
+
+\subsection{Wikipedia Abstract}
+The WikiPedia abstract contains a text with the description of the concept.
+
+\subsection{Properties}
+Each property has the following data:
+- The original word
+- A list containing the original word and eventual stems found by the stemming algorithm.
+- The part-of-speech such as noun, verb or adjective which have been tagged by the POS tagger
+- A list of synsets, any unique meaning that the word or the stem of the word may have. Can be pruned to store only synsets of the same part-of-speech that the POS tagger found.
+- A reference to the synset of the most likely definition found by the \emph{get most likely definition} method
+- A list of hypernyms, from the most specific to the most general, starting with the direct ancestor of the synset.
+
+\subsection{Generic Space}
+A list of synsets containing synsets and hypernym synsets that exist in both concepts.
+
+\subsection{Subtrees}
+Each concept has a list of subtrees containing unique properties and their hypernyms that are subsuming but are not themselves in the generic space. They are given a compatibility score by the \emph{rank compatible blending suggestions} method. The subtree is assigned a depth, a branch length and a penalty value. The depth value contains its least general hypernym in the generic space.
+The branch length is the number of nodes in the subtree. The penalty value is equal to a penalty constant if the property is or has a hypernym in a penalized category.
+
+\subsection{Rank compatible blending suggestions}
+Each subtree are given a compatibility score. This is calculated by the depth minus branch length minus penalty. They are then sorted by this compatibility score.
 
 %----------------------------------------------------------------------------------------
