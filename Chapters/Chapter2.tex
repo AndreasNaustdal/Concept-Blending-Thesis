@@ -120,8 +120,23 @@ An important part of concept blending is not only representing the parts to blen
 \subsection{Natural Language Processing}
 Natural language processing (NLP) is a field in computer science where computers interact with and process human natural language. We use NLP tools such as WordNet and Stanford coreNLP to process the concept descriptions into input spaces for blending.
 
-\subsection{Synset}
+\subsection{Synsets}
 Words that mean the same thing are called synonyms. A synset is a set of synonyms. An ambiguous word can have many different synsets. A \emph{crane} is not only a bird, it is a device that lifts and objects. The most extreme case is the word \emph{break} which can mean 75 different things.
 
-\subsection{Hypernym}
+\subsection{Hypernyms}
 Words belong in categories. A rook belongs to the category chess piece. Chess piece belongs to the category of pieces of any type of board game. If we continue generalizing we get the categories game equipment, equipment, instrumentality, artifact, unit, physical object and physical entity until we finally reach entity. The category something belongs to is called a \emph{hypernym}, and a specific instance of this is called a \emph{hyponym}. A hypernym is the hypernym of a hyponym.
+
+\subsection{Part-of-speech}
+Words can be categorized based on grammatical properties. These categories are called part-of-speech and include nouns, verbs, adjectives, adverbs, pronouns, prepositions, conjunctions, interjections, numerals, articles and determiners.
+
+\subsection{Word sense disambiguation}
+A word can have different meanings called \emph{word senses}. \emph{Word sense disambiguation} (WSD) is the problem of identifying which word sense is the correct when a word can mean different things in a sentence or text. Approaches are commonly divided into supervised, knowledge-based and unsupervised WSD \parencite{moro2014entity}. Performances depend on the domain-specificity of the given text. (SJEKK PÅSTAND) In our case we will have a very specific domain, since we will use WSD on texts describing musical instruments.
+
+Supervised methods are good for domain specific tasks since we can restrict the training set to just use texts from the specific domain we are interested in. If our domain is musical instruments, we can use a training set containing descriptions of musical instruments where each word are annotated with the correct synset. (SJEKK PÅSTAND) Obtaining a large sense-annotated corpora like this is not easy. (SJEKK PÅSTAND) We have not found an encyclopaedia where every word is annotated, but if it existed we could have used only the musical instrument descriptions.
+
+The \emph{Lesk algorithm} is an knowledge-based method where a machine readable dictionary is used to look up the senses and definitions of each word. The definitions which have the most overlapping words with definitions of nearby words are chosen to be the correct definition. \parencite{lesk1986automatic} A variant of this method is called \emph{Simple Lesk} \parencite{kilgarriff2000english}. It differs from the original by returning the definition which has the most overlapping words with the surrounding sentences. It outperformed the original Lesk algorithm (SJEKK PÅSTAND) \parencite{vasilescu2004evaluating}.
+
+Unsupervised methods are better if the text is of any domain, therefore we have not considered using one. (SJEKK PÅSTAND)
+
+\subsection{Stop-words}
+Stop-words is a concept where unwanted, regular appearing words are removed from the sample text. Words such as \emph{I}, \emph{is}, \emph{do} or other common binding words are discarded and replaced by empty strings. By removing these stop-words the only words remaining are words that are more likely to be significant. 
