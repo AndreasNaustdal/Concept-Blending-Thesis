@@ -34,9 +34,9 @@ The parameter ConceptName stands for the name of our concept. By extracting the 
 	}
 }
 
-In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in abstract that may represent the concept. To be properly able to query WordNet with words from the text we need to process the abstract with the steps seen in \textbf{procedure 1}. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed we send the original abstract to the Stanford part-of-speech (POS) tagger to have each word tagged. The POS tagger takes each word in a sentence and use a heuristic method to find out which part-of-speech the word is, such as noun, verb or adjective. This data is useful when we want to reduce the number of potential word meanings in the disambiguation step. We will only get the synsets of that part-of-speech. If the word \emph{bear} is a noun, we only get the nouns such as the animal, not the verb as in \emph{bear a resemblance}. Since it is a heuristic method, the POS tagger may not be correct, in which case we get only the synsets of the wrong pos. The reason we have to tag the words so early in the algorithm is because the POS tagger needs the whole text in order to provide the best suggestions. If we remove stopwords, we lose words that may be important for estimating the correct part-of-speech. 
+In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in abstract that may represent the concept. To be properly able to query WordNet with words from the text we need to process the abstract with the steps seen in \textbf{procedure 1}. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed, we send the original abstract to the Stanford part-of-speech (POS) tagger to have each word tagged. The POS tagger takes each word in a sentence and use a heuristic method to find out which part-of-speech the word is, such as noun, verb or adjective. This data is useful when we want to reduce the number of potential word meanings in the disambiguation step. We will only get the synsets of that part-of-speech. If the word \emph{bear} is a noun, we only get the nouns such as the animal, not the verb as in \emph{bear a resemblance}. Since it is a heuristic method, the POS tagger may not be correct, in which case we get only the synsets of the wrong pos. The reason we have to tag the words so early in the algorithm is because the POS tagger needs the whole text in order to provide the best suggestions. If we remove stop-words, we lose words that may be important for estimating the correct part-of-speech. 
 
-The abstract of cajón after processing and removal of stopwords and duplicate words:
+The abstract of cajón after processing and removal of stop-words and duplicate words:
 
 \noindent\fbox{
 	\parbox{\textwidth}{
@@ -72,7 +72,7 @@ The abstract of cajón after processing and removal of stopwords and duplicate w
 		\State Remove words that has numbers in it
 		\State Change to lower case (WordNet requires lowercase string)
 		
-		\State Remove stopwords
+		\State Remove stop-words
 		\State Remove duplicate words
 		\EndFor
 		
