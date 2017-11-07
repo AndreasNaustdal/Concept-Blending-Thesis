@@ -24,7 +24,16 @@
 
 
 \section{Motivation/Background}
-Combining two concepts into a new concept that combines elements from each original concept is something humans can do rather easily. If we think of blending a horse and a bird, we can easily imagine a winged horse like the mythological Pegasus. Or when blending a car with a boat we can think of an amphibian boat. Formalizing the task of concept blending is not as straightforward. The problem consists of retrieving input data, selecting which parts of the data that should be blended and handling contradictory elements in the final blend.
+Combining two concepts into a new concept that combines elements from each original concept is something humans can do rather easily. If we think of blending a horse and a bird, we can easily imagine a winged horse like the mythological Pegasus. Or when blending a car with a boat we can think of an amphibian boat. The earliest example of concept blending is the \emph{Lion-man of the Hohlenstein-Stadel} which is around 32,000 years old \parencite{turner2014origin}.
+
+Formalizing the task of concept blending is not as straightforward. The problem consists of three steps. \begin{itemize}
+	\item Retrieving input data and creating a representation of the input space
+	%\item selecting which parts of the data that should be blended
+	%selecting elements and relations for blending, what and how they should be blended, blending strategy, criteria for blending
+	%\item the creative strategy including aspects such as selecting elements and criteria for blending
+	\item The creative strategy including the criteria for elements that will be blended and how the blending will be done
+	\item Handling contradictions in the final blend.
+\end{itemize}
 
 For the concept blending algorithm to be useful, it is ideal that the pieces that are merging between the concepts make sense to join. In order to do this, we want to find a way to decompose the concepts into properties containing enough information so that we can look for patterns to identify suitable blending suggestions. %This step of concept blending is what we are going to focus on in this thesis.
 
