@@ -132,6 +132,8 @@ Sometimes the word is similar to, but not equal to the scoring word. For example
 
 An alternative additional scoring system could be to use \emph{context synsets}, specific synsets that automatically give an extra point for being relevant to the category. For example the musical synset of the word \emph{instrument} would automatically get an extra point over non-musical synsets of instruments like the more general synset \emph{device}.
 
+Other techniques could be to give more score to certain words or synsets than others. Some words may be more important, such as the concept name itself. One of the definitions of \emph{hammer} include the word \emph{piano}, which is clearly an important word if this is also the instrument. Therefore it could get a score of 5 when other scoring words get 1 point.
+
 \begin{algorithm}
 	\caption{Get the definition which is most likely to fit the word}\label{euclid}
 	\begin{algorithmic}[1]
