@@ -190,9 +190,32 @@ The algorithm was tested on the alternative blending category sports. The contex
 		sport athletic ball field team goal rules foul score player referee match racket club net skates skis helmet pads bat pitch court tee green win draw loss
 	}
 }
-The penalized category was 'athletic game', as we would not want sports to be suggested, since it is the category itself.
+\\\\The penalized category was 'athletic game', as we would not want sports to be suggested, since it is the category itself.
 
-When performing the algorithm on \emph{soccer} and \emph{golf}, it suggested to move \emph{eleven} (squad) from \emph{soccer} to \emph{golf}, with a depth of 7 minus branch length 1, giving a score of 6. It suggested to move \emph{terrains} from \emph{golf} to \emph{soccer}, with a depth of 7 minus branch length 1, giving a score of 6. The results are interesting, since it can be interpreted as suggesting golf as a team sport of eleven players. Although golf is usually played as an individual sport, there are also a number of team tournaments. Playing soccer on uneven terrain is also an interesting idea that is not common but would be possible to organize, although it may not be an evenly balanced game. One reason for why the interpretations of these suggestions worked well may be because the relations to the other elements in the concept did not contradict. \emph{Terrains} in golf matched with the part \emph{field} in soccer through their common hypernym \emph{parcel}. By not going further up the generalizing chain, the more likely relations still work.
+\subsection{Blending Soccer and Golf }
+Soccer properties:
+
+\noindent\fbox{ \parbox{\textwidth}{
+	
+	association football commonly soccer team played two eleven players spherical ball million dependencies world game field goal object score getting opposing allowed hands arms team sport extra time World Cups
+	
+} }
+\\\\Golf properties:
+	
+\noindent\fbox{ \parbox{\textwidth}{
+	
+	golf club ball players various hit series holes course strokes unlike games standardized playing terrains key level played arranged progression playing area putting green sand traps
+			
+} }
+		
+\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/SoccerToGolf"} \caption{Top suggestion when blending Soccer and Golf. It suggests to move top property \emph{goal} (in red) from Soccer to Golf } \label{ SoccerToGolf } \end{figure}
+		
+\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/GolfToSoccer"} \caption{Top suggestion for moving something from Golf to Soccer. It suggests to move the property \emph{terrains} (in red) from Golf to Soccer } \label{ GolfToSoccer } \end{figure}
+\\\\When performing the algorithm on \emph{soccer} and \emph{golf}, it suggested to move \emph{goal} from \emph{soccer} to \emph{golf}, with a depth of 8 minus branch length 1, giving a score of 7.
+
+%When performing the algorithm on \emph{soccer} and \emph{golf}, it suggested to move \emph{eleven} (squad) from \emph{soccer} to \emph{golf}, with a depth of 7 minus branch length 1, giving a score of 6.
+
+It suggested to move \emph{terrains} from \emph{golf} to \emph{soccer}, with a depth of 7 minus branch length 1, giving a score of 6. The results are interesting, since it can be interpreted as suggesting golf as a team sport of eleven players. Although golf is usually played as an individual sport, there are also a number of team tournaments. Playing soccer on uneven terrain is also an interesting idea that is not common but would be possible to organize, although it may not be an evenly balanced game. One reason for why the interpretations of these suggestions worked well may be because the relations to the other elements in the concept did not contradict. \emph{Terrains} in golf matched with the part \emph{field} in soccer through their common hypernym \emph{parcel}. By not going further up the generalizing chain, the more likely relations still work.
 
 %----------------------------------------------------------------------------------------
 
