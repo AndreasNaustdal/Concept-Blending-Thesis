@@ -6,7 +6,48 @@
 
 %----------------------------------------------------------------------------------------
 
-\section{Musical instruments}
+\section{Identifying right criteria for ranking blends}
+
+\subsection{Speciality}
+We first started by blending musical instruments without any ranking parameters. The blending suggestions we got, were of varying quality. We recognized that the best suggestions were the ones that were most specific, such as the ones that were found due to being in the category device or artifact. Therefore we introduced two criteria to give a higher score to more specific suggestions. The first was to give a positive score based on the depth of the shared hypernym of the blending suggestion and its correlating properties in the other instrument. For example if we blend \emph{Piano} and \emph{Hurdy Gurdy}, it gave a high score to the suggestion of transfering the \emph{piano chamber} over, since the Hurdy Gurdy also has a \emph{bodily cavity} which is the hypernym of chamber. The bodily cavity had a depth score of 7, which tells us that it is far from being general.
+
+The other criteria we introduced was a score negatively proportional to the branch length. From piano chamber, it is only one hypernym up to bodily cavity. This is good because it means that the suggestions are close to each other in speciality. Therefore the score given by the branch length criteria was only -1. The suggestion to was then given the total score of 7 minus 1, which is 6.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{"Figures/hurdy gurdy"}
+\caption{A hurdy gurdy. Like other acoustic instruments it has a hollow cavity that enables us to hear the sound coming from the vibration of the strings}
+\label{fig:hurdy-gurdy}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{"Figures/Piano_HurdyGurdy"}
+	\caption{One of the suggestions when blending Piano and Hurdy Gurdy. It suggests to move \emph{chamber} from Piano to Hurdy Gurdy, since it is a type of \emph{bodily cavity} which is also one of the properties of Hurdy Gurdy, thereby forming a correlation }
+	\label{fig:hurdy-gurdy}
+\end{figure}
+
+\subsection{Category penalty}
+We observed that a lot of suggestions were not useful so we took note of the categories bad blends shared. Different instruments were often mentioned in the abstracts, which were then interpreted as properties. It does not make sense to transfer whole instruments to other instruments. It would be too invasive since concept blending are more about blending parts of concepts, not adding whole concepts to other concepts. Therefore we introduced a penalty score for the category \emph{instruments}. Later we also decided to remove instrument properties altogether since they would still form correlations with other devices, since device is one of the hypernyms of instrument.
+
+We also observed that properties of the category \emph{individuals} were not useful as well, since they were typically people like the inventor of the instrument or a famous musician using this instrument. It does not make sense to blend the people involved, since they are not parts or properties of the instrument. What use would there be to transfer an inventor over to an instrument they have not invented?
+
+We initially thought that abstract entities was a bad category to blend, since good blending examples are typically physical entities. But on further inspection, we found that some of these entities were useful, like shapes and other attributes. Instead, we penalized certain abstract entities that we were more certain being bad categories. \emph{Psychological feature} are probably not interesting if they most likely are part of something other than the instrument, since instruments does not have a psychological quality. We also penalized \emph{communication}, since we are not interested in the message, language or style that is conveyed by the instrument. This is usually a matter of choice from the musician and not the instrument. Although some instruments are typical for a certain style, we do not want to define the style of new instrument in advance of its use.
+
+\subsection{Number of correlating properties}
+We observed that in some cases the top blending suggestions got an equal score. Could we find a difference in quality between these? We introduced another parameter, the number of correlating properties in the other concept. If the other concept has a lot of properties in the same shared category as the blending suggestion, this may tell us that the property is more compatible than the one with few correlations. The property may fit with the other concept in more than one way.
+
+\subsection{Introducing factors for each parameter}
+We realized that a factor of one for each parameter may not be yield the best results. Therefore we introduced a factor for each parameter so that they could be tweaked to push blends of higher quality to the top. Then we could find an optimal range of values for pushing the best suggestions to the top.
+
+\subsection{Other potential criteria}
+We thought of other possible parameters that could be used, that we did not implement and evaluate:
+\begin{itemize}
+\item The branch lengths of the correlating properties could be counted or averaged to give an indication of their speciality.
+\item The difference between the branch lengths of the suggested property and its correlating properties could give an indication of compatibility. For example we may not want to blend a property with a branch length of 5 when the correlating properties are very general in comparison, like if it has a length of 1. Blending \emph{game equipment} like the special chess piece \emph{rook} just because the other concept had a more general game equipment like \emph{game board}, may not be as good as if it were type of board with similar level of specificity like \emph{backgammon board}.
+\end{itemize}
+
+\section{Blending musical instruments}
 When blending musical instruments with no penalty categories, we got the top blending suggestions seen in \textbf{table 6.1}. Top synsets such as \emph{five} and \emph{running} where in the category \emph{abstract entities} and on their own not very interesting in describing musical instruments. If they were to be useful, we would need to model their original relation in the context, which was \emph{five strings} and \emph{running along the soundboard}.
 
 When blending musical instruments using the penalty score 10 for the categories abstract entity, instrument and individual, we got the top blending suggestions seen in \textbf{table 6.2}. We did not exclude synsets that were in the penalized categories. This meant that top synsets often got a good score although the synset in the other instrument that shared the same hypernym was in a penalized category.
