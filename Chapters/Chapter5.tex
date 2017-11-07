@@ -100,34 +100,34 @@ Sometimes WordNet gives no results because the word is in a different variant th
 %----------------------------------------------------------------------------------------
 
 \subsection{Word sense disambiguation}
-Now that we have the key words and noun phrases extracted from the abstract, we will try to find the correct meaning of each word. Let's say we want to find the synset corresponding to the \emph{bow} used to play the \emph{cello}. How can we do this? The following example is done using the algorithm in \textbf{procedure 2} shown below. We have to get a list of words that we will look for in each definition of \emph{bow}. We call this list \emph{scoring words}. \emph{Scoring words} will consist of each word in the processed abstract plus a set of musical context words that can act as the musical context if the abstract lack sufficient musical words. Most likely the definitions we are looking for are related to a musical context. The \emph{context words} we use in this example are:
+Now that we have the key words and noun phrases extracted from the abstract, we will try to find the correct meaning of each word. Let's say we want to find the synset corresponding to the \emph{bow} used to play the \emph{cello}. How can we do this? The following example is done using the algorithm in \textbf{procedure 2} shown below. We have to get a list of words that we will look for in each definition of \emph{bow}. We call this list \emph{scoring words}. \emph{Scoring words} will consist of each word in the processed abstract plus a set of musical context words that can act as the musical context if the abstract lack sufficient musical words. Most likely the definitions we are looking for are related to a musical context.
+\\The \emph{context words} we use in this example are:\\
 \noindent\fbox{
 	\parbox{\textwidth}{music, instrument, tone, tones, sounds, sounding, rhythm, melody, drum, flute, percussion, idiophone, bass, baritone, tenor, alto, soprano, note, pitch, audio, auditory, tune, tuning, acoustic}
 }
-The \emph{scoring words} combines these with the words of the \emph{cello} abstract:
+\\\\The \emph{scoring words} combines these with the words of the \emph{cello} abstract:
 
 \noindent\fbox{
 	\parbox{\textwidth}{
 		cello, violoncello, bowed, plucked, string, instrument, four, strings, tuned, perfect, fifths, low, octave, lower, viola, violin, family, musical, instruments, includes, double, bass, solo, chamber, music, ensembles, orchestras, section, symphony, types, rock, bands, second-largest, lowest, modern, orchestra, largest, pitch
 	}
 }
-We will remove duplicates of words that are in both lists so that each word is equally influential on the scoring. Duplicate words are:
+\\\\We will remove duplicates of words that are in both lists so that each word is equally influential on the scoring. Duplicate words are:
 
 \noindent\fbox{
 	\parbox{\textwidth}{music, instrument, bass, pitch}
 }
-
-To add score to a definition, we count the number of words (excluding stop-words) in each synset definition which also exists in the \emph{scoring words}. The first definition of \emph{bow} is:
+\\\\To add score to a definition, we count the number of words (excluding stop-words) in each synset definition which also exists in the \emph{scoring words}. The first definition of \emph{bow} is:
 
 \noindent\fbox{\parbox{\textwidth}{
 		a knot with two loops and loose ends; used to tie shoelaces
 }}
-None of these words are in the \emph{scoring words} of a cello, therefore we give it a score of 0. The next definition is:
+\\\\None of these words are in the \emph{scoring words} of a cello, therefore we give it a score of 0. The next definition is:
 
 \noindent\fbox{\parbox{\textwidth}{
 		a slightly curved piece of resilient wood with taut horsehair strands; used in playing certain stringed instruments
 }}
-One word, instrument, is found in the cello scoring words, therefore we give it a score of 1. We select the synset that has the highest score, which in this case was the correct bow definition. This approach is heuristic and will not always find the correct synset.
+\\\\One word, instrument, is found in the cello scoring words, therefore we give it a score of 1. We select the synset that has the highest score, which in this case was the correct bow definition. This approach is heuristic and will not always find the correct synset.
 Sometimes the word is similar to, but not equal to the scoring word. For example if the definition had the word \emph{bow}, and scoring words had \emph{bowed}, we would not find it. One way to match these would be to search for \emph{bow} in the start of the string \emph{bowed}, and also search for \emph{bowed} in the start of \emph{bow}. Now we would get matches when the scoring word starts with the definition word and vice versa. An alternative way could be to use a stemming algorithm on the words and see if either the scoring word or scoring word stem matches the definition word or definition word stem.
 
 An alternative additional scoring system could be to use \emph{context synsets}, specific synsets that automatically give an extra point for being relevant to the category. For example the musical synset of the word \emph{instrument} would automatically get an extra point over non-musical synsets of instruments like the more general synset \emph{device}.
