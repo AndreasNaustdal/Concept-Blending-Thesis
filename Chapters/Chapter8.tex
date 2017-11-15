@@ -31,6 +31,8 @@ Following this observation, it would make sense to use a data structure of a lis
 
 %The data structure I have used in my solution is an array of synsets extracted from a WikiPedia article. These synsets are intended to work as a predicate CONSIST_OF, that it is true that the concept consists of the synset. However sometimes the word is actually a different predicate than CONSIST_OF. For example in the concept saxophone, we have the synset of the instrument family woodwind. The relation between 
 
+When blending a \emph{guitar} and \emph{violin} the program suggest to move the words plectrum from \emph{guitar} and \emph{bow} from violin. These are blends that have already been used by several musicians. However the reason they form a correlation is because they are devices, and not because they share the relation of being used to vibrate strings. This means that it can form a correlation with devices that do not have this relation. In order to find this relation, the program would have to look at the sentence \emph{(...)plucking the strings (...) with a pick(...)} and find that pick is used for plucking the strings. Then pick and plucking could be generalized into the words devices and cause motion, which is also true for \emph{bow}. This indicates that using sentences or predicates extracted from sentences rather than words and noun phrases would form better correlations. The scoring of blending suggestions could then have to be based on combinations of generalization-based scores for each word in the sentence.
+
 %----------------------------------------------------------------------------------------
 
 \subsection{Penalized categories}
