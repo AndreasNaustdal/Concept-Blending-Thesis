@@ -80,7 +80,8 @@ A simplifed overview of the application, its components and data flow can be see
 The application send each word of the WikiPedia abstract without stopwords to the stemming algorithm to get eventual stems of the word. WordNet does not recognize all forms of the word, so by stemming we can get access to more synsets.
 
 \subsection{WordNet}
-The application use WordNet in to ways when retrieving language data:
+WordNet is a machine-readable dictionary containing 155,287 unique words and 117,659 synsets. \parencite{fellbaum1998wordnet} \parencite{wordnetstatistics}
+\\The application use WordNet in to ways when retrieving language data:
 \begin{itemize}
 \item Retrieving synsets by querying the WordNet database with words and word stems to get the synsets of each word.
 \item Retrieving hypernyms by querying the WordNet database with synsets to get all hypernyms of that synset.

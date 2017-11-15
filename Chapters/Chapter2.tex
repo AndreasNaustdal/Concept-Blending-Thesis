@@ -119,6 +119,11 @@ An important part of concept blending is not only representing the parts to blen
 
 \subsection{Natural Language Processing}
 Natural language processing (NLP) is a field in computer science where computers interact with and process human natural language. We use NLP tools such as WordNet and Stanford coreNLP to process the concept descriptions into input spaces for blending.
+\subsection{Machine-readable dictionary}
+A machine-readable dictionary (MRD) is a lexical database that can queried by a computer program.
+The quality of the representation of concepts depend on the number of words in the database.
+The more words there are in the domain of musical instruments, the more information we can get from the WikiPedia descriptions.
+We use the WordNet database, as it was the only MRD we found that was large enough for our application. \parencite{fellbaum1998wordnet}
 
 \subsection{Synsets}
 Words that mean the same thing are called synonyms. A synset is a set of synonyms. An ambiguous word can have many different synsets. A \emph{crane} is not only a bird, it is a device that lifts and objects. The most extreme case is the word \emph{break} which can mean 75 different things.
