@@ -9,9 +9,9 @@
 \section{Identifying right criteria for ranking blends}
 
 \subsection{Speciality}
-We first started by blending musical instruments without any ranking parameters. The blending suggestions we got, were of varying quality. We recognized that the best suggestions were the ones that were most specific, such as the ones that were found due to being in the category device or artifact. Therefore we introduced two criteria to give a higher score to more specific suggestions. The first was to give a positive score based on the depth of the shared hypernym of the blending suggestion and its correlating properties in the other instrument. For example if we blend \emph{Piano} and \emph{Hurdy Gurdy}, it gave a high score to the suggestion of transfering the \emph{piano chamber} over, since the Hurdy Gurdy also has a \emph{bodily cavity} which is the hypernym of chamber. The bodily cavity had a depth score of 7, which tells us that it is far from being general.
+We first started by blending musical instruments without any ranking parameters. The blending suggestions we got, were of varying quality. We recognized that the best suggestions were the ones that were most specific, such as the ones that were found due to being in the category device or artifact. Therefore we introduced two criteria to give a higher score to more specific suggestions. The first was to give a positive score based on the depth of the shared hypernym of the blending suggestion and its correlating properties in the other instrument. For example if we blend \emph{Piano} and \emph{Hurdy Gurdy} (seen in Figure~\ref{fig:hurdy-gurdy}), it gave a high score to the suggestion of transfering the \emph{piano chamber} over, since the Hurdy Gurdy also has a \emph{bodily cavity} which is the hypernym of chamber. The bodily cavity had a depth score of 7, which tells us that it is far from being general.
 
-The other criteria we introduced was a score negatively proportional to the branch length. From piano chamber, it is only one hypernym up to bodily cavity. This is good because it means that the suggestions are close to each other in speciality. Therefore the score given by the branch length criteria was only -1. The suggestion to was then given the total score of 7 minus 1, which is 6.
+The other criteria we introduced was a score negatively proportional to the branch length. From piano chamber, it is only one hypernym up to bodily cavity. This is good because it means that the suggestions are close to each other in speciality. Therefore the score given by the branch length criteria was only -1. The suggestion to was then given the total score of 7 minus 1, which is 6. The properties used in the calculation is visualized in Figure~\ref{fig:piano-hurdy-gurdy}.
 
 \begin{figure}
 \centering
@@ -68,6 +68,8 @@ Banjo properties:
 		key pump keyboard top played blowing mouthpiece fits hole side pressing reed popular asia modern form italy century
 		
 	} }
+	
+The properties used in the calculation is visualized in Figure~\ref{fig:Banjo-Melodica}.
 		
 \begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Banjo_Melodica"} \caption{Top suggestion when blending Banjo and Melodica. It suggests to move top property \emph{five} (in red) from Banjo to Melodica } \label{ Banjo-Melodica } \end{figure}
 
@@ -246,11 +248,11 @@ Soccer properties:
 	golf club ball players various hit series holes course strokes unlike games standardized playing terrains key level played arranged progression playing area putting green sand traps
 			
 } }
-\\\\When performing the algorithm on \emph{soccer} and \emph{golf}, it suggested to move \emph{goal} from \emph{soccer} to \emph{golf}, with a depth of 8 minus branch length 1, giving a score of 7.
+\\\\When performing the algorithm on \emph{soccer} and \emph{golf}, it suggested to move \emph{goal} from \emph{soccer} to \emph{golf}, with a depth of 8 minus branch length 1, giving a score of 7 (see Figure~\ref{ SoccerToGolf }).
 
 %When performing the algorithm on \emph{soccer} and \emph{golf}, it suggested to move \emph{eleven} (squad) from \emph{soccer} to \emph{golf}, with a depth of 7 minus branch length 1, giving a score of 6.
 
-It suggested to move \emph{terrains} from \emph{golf} to \emph{soccer}, with a depth of 7 minus branch length 1, giving a score of 6. The results are interesting, since it can be interpreted as suggesting golf as a team sport of eleven players. Although golf is usually played as an individual sport, there are also a number of team tournaments. Playing soccer on uneven terrain is also an interesting idea that is not common but would be possible to organize, although it may not be an evenly balanced game. One reason for why the interpretations of these suggestions worked well may be because the relations to the other elements in the concept did not contradict. \emph{Terrains} in golf matched with the part \emph{field} in soccer through their common hypernym \emph{parcel}. By not going further up the generalizing chain, the more likely relations still work.
+It suggested to move \emph{terrains} from \emph{golf} to \emph{soccer}, with a depth of 7 minus branch length 1, giving a score of 6 (see Figure~\ref{ GolfToSoccer }). The results are interesting, since it can be interpreted as suggesting golf as a team sport of eleven players. Although golf is usually played as an individual sport, there are also a number of team tournaments. Playing soccer on uneven terrain is also an interesting idea (see Figure~\ref{ SoccerTerrain }) that is not common but would be possible to organize, although it may not be an evenly balanced game. One reason for why the interpretations of these suggestions worked well may be because the relations to the other elements in the concept did not contradict. \emph{Terrains} in golf matched with the part \emph{field} in soccer through their common hypernym \emph{parcel}. By not going further up the generalizing chain, the more likely relations still work.
 
 \begin{figure} \centering \includegraphics[width=0.5\linewidth]{"Figures/SoccerToGolf"} \caption{Top suggestion when blending Soccer and Golf. It suggests to move top property \emph{goal} (in red) from Soccer to Golf } \label{ SoccerToGolf } \end{figure}
 
