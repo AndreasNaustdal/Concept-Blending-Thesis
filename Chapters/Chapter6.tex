@@ -71,23 +71,6 @@ Banjo properties:
 		
 \begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Banjo_Melodica"} \caption{Top suggestion when blending Banjo and Melodica. It suggests to move top property \emph{five} (in red) from Banjo to Melodica } \label{ Banjo-Melodica } \end{figure}
 
-\subsection{Blending Harp and Violin }
-
-Harp properties:
-
-\noindent\fbox{ \parbox{\textwidth}{
-		
-	stringed musical soundboard africa ages renaissance family near played burma utilized modern Latin America Near East modern era
-		
-} }
-\\\\Violin properties:
-
-\noindent\fbox{ \parbox{\textwidth}{
-		
-	family regular typically perfect commonly played bow fingers prominent classical country electric forms rock iranian sometimes called fiddle particularly irish traditional regardless italy europe stradivari guarneri amati century brescia cremona austria reputation quality sound disputed hands famous mass-produced commercial cottage saxony bohemia formerly sold sears roebuck co mass violin family
-		
-} }
-		
 \begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Harp_Violin"} \caption{Top suggestion when blending Harp and Violin. It suggests to move top property \emph{cottage} (in red) from Violin to Harp } \label{ Harp-Violin } \end{figure}
 
 \begin{table}
@@ -131,6 +114,62 @@ Harp properties:
 		\bottomrule\\
 	\end{tabular}
 \end{table}
+
+\subsection{Blending Harp and Violin }
+
+Harp properties:
+
+\noindent\fbox{ \parbox{\textwidth}{
+		
+	stringed musical soundboard africa ages renaissance family near played burma utilized modern Latin America Near East modern era
+		
+} }
+\\\\Violin properties:
+
+\noindent\fbox{ \parbox{\textwidth}{
+		
+	family regular typically perfect commonly played bow fingers prominent classical country electric forms rock iranian sometimes called fiddle particularly irish traditional regardless italy europe stradivari guarneri amati century brescia cremona austria reputation quality sound disputed hands famous mass-produced commercial cottage saxony bohemia formerly sold sears roebuck co mass violin family
+		
+} }
+\\\\We tried harp and violin after removing unnecessary sentences containing cultural and historical descriptions from the abstract. This lead to fewer properties.
+\\The properties of harp were now:
+
+\noindent\fbox{ \parbox{\textwidth}{
+		
+	stringed running soundboard plucked
+		
+} }
+\\\\Violin properties:
+
+\noindent\fbox{ \parbox{\textwidth}{
+			
+	fiddle family four tuned perfect commonly played drawing bow violin family
+			
+} }
+\\\\The best suggestion has only a score of one, and is not really a good one. This could either be due to few blending possibilities between a Harp and Violin, or due to the abstracts not describing the instruments with enough details. The properties used in the calculation is visualized in Figure~\ref{Harp-Violin-RemovedSentences}.
+We can find some more properties from the abstract by changing the suffix of some words, retrieving related properties such as \emph{string} from \emph{stringed} and \emph{wood} from \emph{wooden}. %OBS FÅR IKKJE STRING PGA DEN ER MERKA SOM DUPLIKAT :/ DUPLIKATAR MÅ VERE SYNSETS IKKJE ORD
+This did not improve the results however. Strings are not suggested since it already exists in both instruments. Blending wood got a low score of -3, it only correlated with other physical entities, which is very general.
+		
+\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Harp_ViolinRemovedSentences"} \caption{Top suggestion when blending Harp and Violin after removing unwanted sentences in abstracts. It suggests to move top property (in red) from Violin to Harp } \label{ Harp-Violin-RemovedSentences } \end{figure}
+
+\subsection{Blending Cello and Oboe}
+Cello properties:
+
+\noindent\fbox{ \parbox{\textwidth}{
+		
+	bowed sometimes plucked string four strings tuned low lower double rests floor support weight carved wood violin family
+		
+} }
+\\\\Oboe properties:
+
+\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Cello_Oboe"} \caption{Top suggestion when blending Cello and Oboe. It suggests to move top property (in red) from Oboe to Cello } \label{ Cello-Oboe } \end{figure}
+
+\noindent\fbox{ \parbox{\textwidth}{
+			
+	double reed wood soprano cm metal flared bell sound blowing column tone
+			
+} }	
+\\\\This blend was, as indicated by its low score, quite general (see Figure~\ref{Cello-Oboe}). The blending suggestion could have been any artifact on the oboe. It is not easy to imagine how a flared bell could fit on a cello without further elaboration. Perhaps the body could be given this shape and resonate in an interesting way. But since air is not blown through the body of a cello like a wind instrument, it might not have the same effect on the timbre as on an oboe. But there exists a type of drums called Staccato drums which have a notched horn shape to change its sound quality and volume.
 
 \begin{table}
 	\caption{Examples of best suggestions when blending different pairs of instruments. Score is based on depth of word in tree (D) minus branch length from shared hypernym (BL). Words are also penalized if they have a hypernym called \emph{abstract entity}, \emph{instrument} or \emph{individual}}
