@@ -24,20 +24,27 @@
 
 
 \section{Motivation/Background}
-Combining two concepts into a new concept that combines elements from each original concept is something humans can do rather easily. If we think of blending a horse and a bird, we can easily imagine a winged horse like the mythological Pegasus. Or when blending a car with a boat we can think of an amphibian boat. The earliest example of concept blending is the \emph{Lion-man of the Hohlenstein-Stadel} which is around 32,000 years old \parencite{turner2014origin}.
+Combining two concepts into a new concept that combine elements from each original concept is something humans can do rather easily.
+If we think of blending a horse and a bird, we can easily imagine a winged horse like the mythological Pegasus.
+Or when blending a car with a boat we can think of an amphibian boat.
+The earliest example of concept blending is the \emph{Lion-man of the Hohlenstein-Stadel} which is around 32,000 years old \parencite{turner2014origin}.
+Conceptual blending is not just combining physical parts, but also abstract elements.
+Whenever we choose a day for an appointment next week, in our minds we manage to blend it into each day even though they are ahead of us.
+We also blend the usual day-night cycle, the typical work-day and other appointments into these days.
+Then we can compare the days to see which one the appointment fits best into. %we manage to compare days by combining parts from the usual workday with. %For example when we think of a wednesday, we know that it will go from night to day and back, just like a normal day. But we also combine elements from the usual week-day, like planning an early breakfast before going to work, which is not typical of weekends. If we plan to do something one evening, we can compare different evenings. But they are all days.
 
-Formalizing the task of concept blending is not as straightforward. The problem consists of three steps. \begin{itemize}
+Although humans do conceptual blending unconsciously on a daily basis, formalizing the task of concept blending is not a straightforward process. The problem consists of three steps: \begin{itemize}
 	\item Retrieving input data and creating a representation of the input space
 	%\item selecting which parts of the data that should be blended
 	%selecting elements and relations for blending, what and how they should be blended, blending strategy, criteria for blending
 	%\item the creative strategy including aspects such as selecting elements and criteria for blending
 	\item The creative strategy including the criteria for elements that will be blended and how the blending will be done
-	\item Handling contradictions in the final blend.
+	\item Elaboration of the blend, including interpretation of properties and handling contradictions in the final blend.
 \end{itemize}
 
-For the concept blending algorithm to be useful, it is ideal that the pieces that are merging between the concepts make sense to join. In order to do this, we want to find a way to decompose the concepts into properties containing enough information so that we can look for patterns to identify suitable blending suggestions. %This step of concept blending is what we are going to focus on in this thesis.
+For the concept blending algorithm to be useful, it is ideal that the pieces that are merging between the concepts make sense to join. Therefore we want to find a way to decompose the concepts into properties containing enough information so that we can find patterns that can identify suitable blending suggestions. %This step of concept blending is what we are going to focus on in this thesis.
 
-The goal of this master thesis is to implement an algorithm to provide suggestions of elements that are suitable for transfer from one concept to another. Descriptions of the two concepts are retrieved from a public data source, DBpedia, and natural language processing tools like WordNet and Stanford Parser are used to find which elements the concept consists of. Although the concept blending algorithm may be used on any concepts, I will focus mainly on the domain of musical instruments, with the goal of designing new instruments. Further the generated instruments will be evaluated on how useful they are in a musical context. The goal is to find out whether this approach can produce new instruments that make sense and find out how the algorithm can be useful to musicians and instrument makers.
+The goal of this master thesis is to implement an algorithm to provide suggestions of elements that are suitable for transfer from one concept to another. Descriptions of the two concepts are retrieved from a public data source, WikiPedia. Natural language processing tools like WordNet and Stanford Parser are used to find which elements the concepts consists of. Although the concept blending algorithm may be used on any concepts, we will focus mainly on the domain of musical instruments, with the goal of designing new instruments. Further the generated instruments will be evaluated on how useful they are in a musical context. The goal is to find out whether this approach can produce new instruments that make sense and find out how the algorithm can be useful to musicians and instrument makers.
 
 %----------------------------------------------------------------------------------------
 
