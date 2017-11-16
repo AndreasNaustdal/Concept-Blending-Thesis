@@ -35,7 +35,7 @@ We can retrieve the abstracts using a HTTP call to the wikipedia API:
 		A cajón is nominally a box-shaped percussion instrument originally from Peru, played by slapping the front or rear faces with the hands, fingers, or sometimes various implements such as brushes, mallets, or sticks.
 	}
 }
-\\\\In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in abstract that may represent the concept. To be properly able to query WordNet with words from the text we need to process the abstract with the steps seen in \textbf{procedure 1}. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed, we send the original abstract to the Stanford part-of-speech (POS) tagger to have each word tagged. The POS tagger takes each word in a sentence and use a heuristic method to find out which part-of-speech the word is, such as noun, verb or adjective. This data is useful when we want to reduce the number of potential word meanings in the disambiguation step. We will only get the synsets of that part-of-speech. If the word \emph{bear} is a noun, we only get the nouns such as the animal, not the verb as in \emph{bear a resemblance}. Since it is a heuristic method, the POS tagger may not be correct, in which case we get only the synsets of the wrong pos. The reason we have to tag the words so early in the algorithm is because the POS tagger needs the whole text in order to provide the best suggestions. If we remove stop-words, we lose words that may be important for estimating the correct part-of-speech. 
+\\\\In order for the algorithm to be able to provide suggestions for the best properties to transfer between two concepts, we need to find properties in abstract that may represent the concept. To be properly able to query WordNet with words from the text we need to process the abstract with the steps seen in Procedure~\ref{alg:processWikipediaAbstract}. Initially the descriptions consists of a lot of common words we are not interested in called stop-words. We use a stop-word list to remove them. But before they are removed, we send the original abstract to the Stanford part-of-speech (POS) tagger to have each word tagged. The POS tagger takes each word in a sentence and uses a heuristic method to find out which part-of-speech the word is, such as noun, verb or adjective. This data is useful when we want to reduce the number of potential word meanings in the disambiguation step. We will only get the synsets of that part-of-speech. If the word \emph{bear} is a noun, we only get the nouns such as the animal, not the verb as in \emph{bear a resemblance}. Since it is a heuristic method, the POS tagger may not be correct, in which case we get only the synsets of the wrong pos. The reason we have to tag the words so early in the algorithm is because the POS tagger needs the whole text in order to provide the best suggestions. If we remove stop-words, we lose words that may be important for estimating the correct part-of-speech. 
 
 The abstract of cajón after processing and removal of stop-words and duplicate words:\\
 
@@ -47,7 +47,7 @@ The abstract of cajón after processing and removal of stop-words and duplicate 
 %First the algorithm tries to grammatically tag each word using the Stanford part-of-speech tagger.
 
 \begin{algorithm}
-	\caption{Process a WikiPedia abstract to prepare words for WordNet queries}\label{euclid}
+	\caption{Process a WikiPedia abstract to prepare words for WordNet queries}\label{alg:processWikipediaAbstract}
 	\begin{algorithmic}[1]
 		\Require wikipediaAbstract,
 		\Ensure processedWikipediaAbstract, wikipediaAbstractWithoutStopwords
@@ -101,7 +101,7 @@ Sometimes WordNet gives no results because the word is in a different variant th
 %----------------------------------------------------------------------------------------
 
 \subsection{Word sense disambiguation}
-Now that we have the key words and noun phrases extracted from the abstract, we will try to find the correct meaning of each word. Let's say we want to find the synset corresponding to the \emph{bow} used to play the \emph{cello}. How can we do this? We have to get a list of words that we will look for in each definition of \emph{bow}. We call this list \emph{scoring words}. \emph{Scoring words} will consist of each word in the processed abstract plus a set of musical context words that can act as the musical context if the abstract lack sufficient musical words. Most likely the definitions we are looking for are related to a musical context. We use the algorithm in \textbf{procedure 2} shown below. It is based on the \emph{Simple Lesk} algorithm.
+Now that we have the key words and noun phrases extracted from the abstract, we will try to find the correct meaning of each word. Let's say we want to find the synset corresponding to the \emph{bow} used to play the \emph{cello}. How can we do this? We have to get a list of words that we will look for in each definition of \emph{bow}. We call this list \emph{scoring words}. \emph{Scoring words} will consist of each word in the processed abstract plus a set of musical context words that can act as the musical context if the abstract lack sufficient musical words. Most likely the definitions we are looking for are related to a musical context. We use the algorithm in Procedure~\ref{alg:getMostLikelyDefinition}. It is based on the \emph{Simple Lesk} algorithm.
 \\The \emph{context words} we use in this example are:\\
 \noindent\fbox{
 	\parbox{\textwidth}{music, instrument, tone, tones, sounds, sounding, rhythm, melody, drum, flute, percussion, idiophone, bass, baritone, tenor, alto, soprano, note, pitch, audio, auditory, tune, tuning, acoustic}
@@ -136,7 +136,7 @@ An alternative additional scoring system could be to use \emph{context synsets},
 Other techniques could be to give more score to certain words or synsets than others. Some words may be more important, such as the concept name itself. One of the definitions of \emph{hammer} include the word \emph{piano}, which is clearly an important word if this is also the instrument. Therefore it could get a score of 5 when other scoring words get 1 point.
 
 \begin{algorithm}
-	\caption{Get the definition which is most likely to fit the word}\label{euclid}
+	\caption{Get the definition which is most likely to fit the word}\label{alg:getMostLikelyDefinition}
 	\begin{algorithmic}[1]
 		\Require ambigousWord,
 		definitions,
@@ -179,10 +179,10 @@ The point of the algorithm is to find properties in one concept that has correla
 
 Our solution give score proportional to the speciality of the word and penalize proportionally to how general the generalization is, aiming for the most specific generalization. In the example above, minivan should get a good score, since it is specific and the other concept is a vehicle, which makes not a too general generalization. However a minivan and SUV would give a better score, since they are both cars, which is less general than vehicle.
 
-The algorithm we use to create the generic space between is shown below as \textbf{procedure 3}. We can pass \emph{Cajón} as the source concept and \emph{Clapsticks} as the target concept. After processing the abstracts and finding the most likely synsets of each property, we can use WordNet to retrieve a list of every hypernym ancestor of each synset, which will go from the least general to the most general generalization. They can be accessed from the array \emph{concept.property.hypernyms}. To create the generic space, we simply retrieve all synsets and hypernymsynsets in each concept and use a intersection set operation to keep what we find in both concepts.
+The algorithm we use to create the generic space between is shown in Procedure~\ref{alg:getGenericSpace}. We can pass \emph{Cajón} as the source concept and \emph{Clapsticks} as the target concept. After processing the abstracts and finding the most likely synsets of each property, we can use WordNet to retrieve a list of every hypernym ancestor of each synset, which will go from the least general to the most general generalization. They can be accessed from the array \emph{concept.property.hypernyms}. To create the generic space, we simply retrieve all synsets and hypernym synsets in each concept and use a intersection set operation to keep what we find in both concepts.
 
 \begin{algorithm}
-	\caption{Get all synsets in the generic space between two concepts}\label{euclid}
+	\caption{Get all synsets in the generic space between two concepts}\label{alg:getGenericSpace}
 	\begin{algorithmic}[1]
 		\Require sourceConcept,
 		targetConcept
@@ -225,10 +225,10 @@ Now the winning words were specific, but too often abstract, being an instrument
 An observation of the properties that connected in the general space, showed that a lot of these were in penalized categories. For example a property of the penalized category instrument is a device, which makes devices in the other concept score higher than if there were no other devices in the first concept. A way to avoid this could be to remove properties of penalized categories altogether. This leads to far less blending suggestions, but the suggestions that are left are of relatively high quality. Since no blending suggestions are in penalized categories also makes the penalty score redundant.
 
 \subsection{Ranking Compatible Blending Suggestions}
-First we find each property that are not in the generic space themselves but has a hypernym in the generic space. This means that this property can be blended and we can give it a compatibility score for whether it is a good blending suggestion. We call the branch from the synset and hypernyms subsuming its hypernyms in the generic space for \emph{blending subtree}. We set the compatibility score to the depth of its least general hypernym in the generic space minus the length of the \emph{blending subtree}. Finally we can optionally subtract a constant penalty value if the property is or has a hypernym in a penalized category. With this score we can store the unique properties in a list which we can rank using a heuristic function. The algorithm for finding unique properties and ranking them is shown below in \textbf{procedure 4}.
+First we find each property that are not in the generic space themselves but has a hypernym in the generic space. This means that this property can be blended and we can give it a compatibility score for whether it is a good blending suggestion. We call the branch from the synset and hypernyms subsuming its hypernyms in the generic space for \emph{blending subtree}. We set the compatibility score to the depth of its least general hypernym in the generic space minus the length of the \emph{blending subtree}. Finally we can optionally subtract a constant penalty value if the property is or has a hypernym in a penalized category. With this score we can store the unique properties in a list which we can rank using a heuristic function. The algorithm for finding unique properties and ranking them is shown below in Procedure~\ref{alg:RankCompatibleBlendingSuggestions}.
 
 \begin{algorithm}
-	\caption{Perform creative strategy by ranking a concepts subtrees by finding a pair in the other concept with the highest compability, defined by the expression Depth - BranchLength - Penalty}\label{euclid}
+	\caption{Perform creative strategy by ranking a concepts subtrees by finding a pair in the other concept with the highest compability, defined by the expression Depth - BranchLength - Penalty}\label{alg:RankCompatibleBlendingSuggestions}
 	\begin{algorithmic}[1]
 		\Require properties,
 		concept,
