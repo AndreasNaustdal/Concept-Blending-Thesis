@@ -76,21 +76,28 @@ A simplifed overview of the final application, its components and data flow can 
 \label{fig:application-structure}
 \end{figure}
 
-\subsection{Stemming algorithm}
-The application send each word of the WikiPedia abstract without stopwords to the stemming algorithm to get eventual stems of the word. WordNet does not recognize all forms of the word, so by stemming we can get access to more synsets.
+\subsection{Tools}
 
-\subsection{WordNet}
+\subsubsection{WordNet}
 WordNet is a machine-readable dictionary containing 155,287 unique words and 117,659 synsets. \parencite{fellbaum1998wordnet} \parencite{wordnetstatistics}
 \\The application use WordNet in to ways when retrieving language data:
 \begin{itemize}
-\item Retrieving synsets by querying the WordNet database with words and word stems to get the synsets of each word.
-\item Retrieving hypernyms by querying the WordNet database with synsets to get all hypernyms of that synset.
+	\item Retrieving synsets by querying the WordNet database with words and word stems to get the synsets of each word.
+	\item Retrieving hypernyms by querying the WordNet database with synsets to get all hypernyms of that synset.
 \end{itemize}
 
-\subsection{POS tagger}
+\subsubsection{POS tagger}
 The application sends the whole WikiPedia abstract of each concept as a string into the POS tagger, to retrieve an two-dimensional array where the first column contain the words and the second contain the part-of-speech tag.
 
-\subsection{Get most likely definition}
+\subsubsection{Parser/stop-word removal}
+
+
+\subsection{Algorithms}
+
+\subsubsection{Stemming algorithm}
+The application send each word of the WikiPedia abstract without stopwords to the stemming algorithm to get eventual stems of the word. WordNet does not recognize all forms of the word, so by stemming we can get access to more synsets.
+
+\subsubsection{Get most likely definition}
 The application use the \emph{get most likely definition} method as a heuristic function to find the synset that most likely carry the correct definition of the word. The method takes the following input:
 \begin{itemize}
 	\item The ambigous word in question
@@ -98,8 +105,15 @@ The application use the \emph{get most likely definition} method as a heuristic 
 	\item A list of scoring words, which is made up of the abstract words and a set of words relating to the context (musical instruments)
 \end{itemize}
 
+\subsubsection{Rank compatible blending suggestions}
+Each subtree are given a compatibility score. This is calculated by the depth minus branch length minus penalty. They are then sorted by this compatibility score.
 
-\subsection{Concept}
+\subsection{Data representation}
+
+\subsubsection{Wikipedia Abstract}
+The WikiPedia abstract contains a text with the description of the concept.
+
+\subsubsection{Concept}
 We have two concepts we want to blend. Each concept has the following data:
 \begin{itemize}
 \item A name which we will use to find the corresponding WikiPedia article for
@@ -108,10 +122,7 @@ We have two concepts we want to blend. Each concept has the following data:
 \item A list of properties.
 \end{itemize}
 
-\subsection{Wikipedia Abstract}
-The WikiPedia abstract contains a text with the description of the concept.
-
-\subsection{Properties}
+\subsubsection{Properties}
 Each property has the following data:
 \begin{itemize}
 \item The original word
@@ -122,14 +133,11 @@ Each property has the following data:
 \item A list of hypernyms, from the most specific to the most general, starting with the direct ancestor of the synset.
 \end{itemize}
 
-\subsection{Generic Space}
+\subsubsection{Generic Space}
 The generic space contains a list of synsets and hypernym synsets that exist in both concepts.
 
-\subsection{Subtrees}
+\subsubsection{Subtrees}
 Each concept has a list of subtrees containing unique properties and their hypernyms that are subsuming but are not themselves in the generic space. They are given a compatibility score by the \emph{rank compatible blending suggestions} method. The subtree is assigned a depth, a branch length and a penalty value. The depth value contains its least general hypernym in the generic space.
 The branch length is the number of nodes in the subtree. The penalty value is equal to a penalty constant if the property is or has a hypernym in a penalized category.
-
-\subsection{Rank compatible blending suggestions}
-Each subtree are given a compatibility score. This is calculated by the depth minus branch length minus penalty. They are then sorted by this compatibility score.
 
 %----------------------------------------------------------------------------------------
