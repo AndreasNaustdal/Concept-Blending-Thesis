@@ -149,8 +149,8 @@ A word can have different meanings called \emph{word senses}. \emph{Word sense d
 Supervised methods create a classifier by training on data sets of texts where the words have been labeled with the correct sense. \parencite{navigli2009word}.
 
 Unsupervised methods are based on data sets of unlabeled texts. \parencite{navigli2009word}. %GRATIS Skrive meir om korleis dei er avhengig av naboorda?
+\subsection{The Lesk Algorithm}
 
-The \emph{Lesk algorithm} is an knowledge-based method where a machine readable dictionary is used to look up the senses and definitions of each word. The definitions which have the most overlapping words with definitions of nearby words are chosen to be the correct definition. \parencite{lesk1986automatic} A variant of this method is called \emph{Simple Lesk} \parencite{kilgarriff2000english}. It differs from the original by returning the definition which has the most overlapping words with the surrounding sentences. 
 The \emph{Lesk algorithm} is a knowledge-based method where a machine readable dictionary is used to look up the senses and definitions of each word. The definitions which have the most overlapping words with definitions of nearby words are chosen to be the correct definition. \parencite{lesk1986automatic} A variant of this method is called \emph{Simple Lesk} \parencite{kilgarriff2000english}. It differs from the original by returning the definition which has the most overlapping words with the surrounding sentences. 
 Since we are using WikiPedia articles, an approach for extending this technique could be to compare versions of the article in different languages, and look for overlapping senses in these versions by using multilingual versions of WordNet. For each word in english, look for the sense that has the highest frequency in the versions of the other languages.
 
