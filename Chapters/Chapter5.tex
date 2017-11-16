@@ -89,7 +89,7 @@ When analysing a text for useful properties, some of them may be described by mu
 
 %----------------------------------------------------------------------------------------
 
-\subsection{WordNet database}
+\subsection{Synsets}
 WordNet provides a set of synsets for each word in the database, and each of these synsets has a unique definition. If we search for the word \emph{string}, WordNet returns a set of 10 nouns and 7 verbs. We want to search WordNet for every word we found in the abstract and find the correct synsets so that we have a list of unambiguous properties representing the concept. WordNet also store the POS of a word, so we can use the POS tagger data to remove every synset of the wrong POS. For instance if we have tagged \emph{piano} as a noun, we can remove the adjective \emph{piano} which means soft.
 %Nevne tagger her? Kan luke vekk nouns eller verbs
 
