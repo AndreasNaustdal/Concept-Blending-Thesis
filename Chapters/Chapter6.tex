@@ -193,9 +193,42 @@ After improving the abstracts by manually selecting useful parts from the Wikipe
 
 \subsection{Blending Guitar and Violin}
 \subsubsection{Unaltered abstract}
+Guitar properties:\\
+\noindent\fbox{ \parbox{\textwidth}{
+		
+	fretted usually six sound projected acoustically hollow wooden box electrical amplifier speaker typically played strumming fingers fingernails hand pick fretting left type traditionally constructed strung steel distinguished modern renaissance baroque three types acoustic classical sometimes called tone body acts resonating chamber plucked individually opposed strummed country united low-pitched below regular electric loudspeaker makes loud performers audience hear signal electronically manipulate shape equalizer huge electronic units commonly ones distortion employed solid eventually right hand left hand resonating chamber
+		
+} }
+\\\\Violin properties:\\
+\noindent\fbox{ \parbox{\textwidth}{
+			
+	family regular typically perfect commonly played bow fingers prominent classical country electric forms rock iranian sometimes called fiddle particularly irish traditional regardless italy europe stradivari guarneri amati century brescia cremona austria reputation quality sound disputed hands famous mass-produced commercial cottage saxony bohemia formerly sold sears roebuck co mass violin family
+			
+} }
+		
+\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Guitar_Violin"} \caption{Top suggestion when blending Guitar and Violin. It suggests to move top property pick (in red) from Guitar to Violin } \label{fig:Guitar-Violin} \end{figure}
 
 \subsubsection{Optimal environment}
 
+Guitar properties:\\
+\noindent\fbox{ \parbox{\textwidth}{
+		
+	fretted usually six strings key frets truss rod neck body transducer bridge soundboard sound hole projected acoustically hollow wooden plastic wood box electrical amplifier speaker typically played strumming plucking pick fretting constructed strung gut nylon steel distinguished tone acoustic vibration acts resonating chamber comprehensive string plucked individually opposed strummed electric loudspeaker makes loud audience hear signal electronically manipulate shape equalizer huge electronic units commonly ones distortion employed solid eventually feedback electro-acoustic transducer sound hole resonating chamber
+		
+} }	
+\\\\Violin properties:\\
+\noindent\fbox{ \parbox{\textwidth}{
+			
+	wooden string family scroll neck fingerboard bridge sound hole tailpiece four strings tuned commonly played drawing bow plucking called wood strung gut synthetic steel sound hole
+			
+} }
+		
+
+There were a lot of blending suggestions from guitar to violin that shared the top score of 6, and also one from violin to guitar. All of them had a depth of 7 and branch length of 1. It suggested to move the number \emph{six} as in six strings from guitar due to a correlation with the number \emph{four} in violin. And four strings were naturally suggested to move to guitar as well. These examples have been already been produced, although four string guitars are not very popular and six string violins are not practical to play. Like the unaltered abstract, moving pick from guitar to violin was also the top suggestion, but this time it got a higher score because it correlated with the property \emph{bridge} through the more specific hypernym \emph{device}. Although correlating with a bow would be more interesting, since pick and bow are both used to vibrate a string. This is another indication that using relations in the algorithm would give more meaningful correlations, since it would be useful to find other properties that are able to vibrate or do something more general to the string.
+
+Another top blending suggestion was to move a \emph{rod}, as in the guitars truss rod, over to violin. It correlated with the violin \emph{bow} since they are both implements. A truss rod is a steel bar inside the guitar neck, that keeps the thin neck from curving due to the tension of the strings. Therefore it is not closely related to a bow, but making a violin with a truss rod could be useful if we wanted to make the neck thinner or use string materials of higher tension than a normal neck would withstand. %Other top blending suggestions were to move \emph{gut}, as in a string made of gut, from guitar to violin. It correlated with the word \emph{string} in violin since they are both of the category cords. This could be an interesting thing to blend, although  %TODO
+
+Interesting suggestions that have lower score include moving frets from guitar, but it forms a less interesting correlation with \emph{bow} through the hypernym implement. It would be desirable if the fretboard of guitar formed a correlation with the fingerboard of violin, but fretboard is not recognized by WordNet, although fingerboard is. The hypernym of fingerboard is \emph{strip}, defined as a thin piece of wood or metal. Fingerboard could form interesting suggestions by blending violin with certain objects since people have been mounting strings on shovels and other such thin pieces of wood or metal. However the \emph{bar} of a shovel is considered by WordNet as an instrumentality while \emph{strip} is considered a building material, meaning they are separated too generally to achieve a good score. This is another example of how it is hard to use WordNet to find close relations by comparing only single synsets.
 
 %----------------------------------------------------------------------------------------
 
