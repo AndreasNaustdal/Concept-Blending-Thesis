@@ -13,17 +13,11 @@ We first started by blending musical instruments without any ranking parameters.
 
 The other criteria we introduced was a score negatively proportional to the branch length. From piano chamber, it is only one hypernym up to bodily cavity. This is good because it means that the suggestions are close to each other in speciality. Therefore the score given by the branch length criteria was only -1. The suggestion to was then given the total score of 7 minus 1, which is 6. The properties used in the calculation is visualized in Figure~\ref{fig:piano-hurdy-gurdy}.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{"Figures/hurdy gurdy"}
-\caption{A hurdy gurdy. Like other acoustic instruments it has a hollow cavity that enables us to hear the sound coming from the vibration of the strings}
-\label{fig:hurdy-gurdy}
-\end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\linewidth]{"Figures/Piano_HurdyGurdy"}
-	\caption{One of the suggestions when blending Piano and Hurdy Gurdy. It suggests to move \emph{chamber} from Piano to Hurdy Gurdy, since it is a type of \emph{bodily cavity} which is also one of the properties of Hurdy Gurdy, thereby forming a correlation }
+	\caption[Blending piano and hurdy gurdy]{One of the suggestions when blending piano and hurdy gurdy. It suggests to move \emph{chamber} from piano to hurdy gurdy, since it is a type of \emph{bodily cavity} which is also one of the properties of hurdy gurdy, thereby forming a correlation.}
 	\label{fig:piano-hurdy-gurdy}
 \end{figure}
 
@@ -88,16 +82,15 @@ By improving the banjo abstract we got more relevant properties like \emph{strin
 			
 } }
 \\\\The top blending suggestion we got was introducing \emph{machine} as in the guitar's worm gear machine head for tuning the strings (see Figure~\ref{fig:worm-gear}). It correlated with the \emph{reed} of melodica, through the category \emph{mechanical device}. It is more specific than the other categories, but still so general that they are not closely related in function. Although we found the noun phrase \emph{machine head}, it did not exist in WordNet, giving us a indication of the limits of its database. The user may be inspired to create a melodica where you can tune the reeds with a similar tuning device as guitar.
+\begin{figure}[h] \centering \includegraphics[width=0.7\linewidth]{"Figures/Banjo_Melodica2"} \caption[Blending banjo and melodica]{The top suggestion when blending banjo and melodica using improved abstracts. It suggests to move top property \emph{machine} (in red) as in \emph{worm gear machine head} from banjo to melodica. } \label{fig:Banjo-Melodica2} \end{figure}
 The calculation of this blending suggestion is visualized in Figure~\ref{fig:Banjo-Melodica2}.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.5\linewidth]{"Figures/worm gear"}
-\caption{A worm gear which is used in a machine head for tuning the strings of banjos and guitars}
+\caption[Worm gear]{A worm gear which is used in a machine head for tuning the strings of banjos and guitars}
 \label{fig:worm-gear}
 \end{figure}
-
-\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Banjo_Melodica2"} \caption{Top suggestion when blending Banjo and Melodica using improved abstracts. It suggests to move top property \emph{machine} (in red) as in \emph{worm gear machine head} from Banjo to Melodica } \label{fig:Banjo-Melodica2} \end{figure}
 		
 
 \subsection{Blending Harp and Violin }
@@ -119,7 +112,8 @@ Harp properties:
 		
 } }
 
-\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Harp_Violin"} \caption{Top suggestion when blending Harp and Violin. It suggests to move top property \emph{cottage} (in red) from Violin to Harp } \label{fig:Harp-Violin} \end{figure}
+
+\begin{figure}[h] \centering \includegraphics[width=0.7\linewidth]{"Figures/Harp_Violin"} \caption[Blending harp and violin]{Top suggestion when blending harp and violin. It suggests to move top property \emph{cottage} (in red) from violin to harp } \label{fig:Harp-Violin} \end{figure}
 
 \subsubsection{Optimal environment}
 Harp properties:\\
@@ -139,9 +133,6 @@ Harp properties:\\
 The other top suggestion was to move the \emph{bridge} from violin to harp, correlating with \emph{levers} through the category \emph{device}. Not a very interesting addition, since harp strings is mounted in a way that transmit enough vibration to the soundboard already.
 
 The top suggestion to move from harp to violin was \emph{pedals} which modify pitch, correlating with the violin \emph{bow} through the category \emph{implement}. This could be an interesting feature, but since the violin has no frets, modifying pitch is already possible with the glissando technique where you slide fingers up or down the string. However if you want to play lower than the open string or bend further than the fingers can reach (unlikely on a small violin), a pedal could be useful.
-		
-\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Harp_ViolinOptimal"} \caption{Top suggestion when blending Harp and Violin. It suggests to move top property \emph{bow} (in red) from Violin to Harp } \label{fig:Harp-Violin} \end{figure}
-
 
 \subsection{Blending Cello and Oboe}
 
@@ -156,7 +147,6 @@ Cello properties:
 } }
 \\\\Oboe properties:
 
-\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Cello_Oboe"} \caption{Top suggestion when blending Cello and Oboe. It suggests to move top property (in red) from Oboe to Cello } \label{Cello-Oboe} \end{figure}
 
 \noindent\fbox{ \parbox{\textwidth}{
 			
@@ -185,7 +175,7 @@ Dobro properties:\\
 \\\\We started with the unaltered abstract.
 With these properties we got similar blending suggestions from both Dobro and Harp. It suggested to move \emph{body}, the cavity resonator, from dobro to the harp, while it also suggested to move the soundboard, which is also a cavity resonator, from harp to dobro. Being both types of cavity resonator, they got the same score. Although a dobro has a body, this word came from a reference to a solid body guitar, which is not the same. Other suggestions were not nearly as good in terms of score, moving steel from dobro to harp got as score of 1, but it was the wrong synset. Not the material but a sharpener. Manually improving the WSD did not improve the suggestions and scores significantly. 
 		
-\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Dobro_Harp"} \caption{Top suggestion when blending Dobro and Harp. It suggests to move top property body (in red) from Dobro to Harp} \label{Dobro-Harp} \end{figure}
+\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Dobro_Harp"} \caption[Blending dobro and harp]{Top suggestion when blending dobro and harp. It suggests to move top property body (in red) from dobro to harp} \label{Dobro-Harp} \end{figure}
 
 \subsubsection{Optimal environment}
 
@@ -207,7 +197,7 @@ Guitar properties:\\
 			
 } }
 		
-\begin{figure} \centering \includegraphics[width=0.7\linewidth]{"Figures/Guitar_Violin"} \caption{Top suggestion when blending Guitar and Violin. It suggests to move top property pick (in red) from Guitar to Violin } \label{fig:Guitar-Violin} \end{figure}
+\begin{figure}[h] \centering \includegraphics[width=0.7\linewidth]{"Figures/Guitar_Violin"} \caption[Blending guitar and violin]{Top suggestion when blending guitar and violin. It suggests to move top property pick (in red) from guitar to violin } \label{fig:Guitar-Violin} \end{figure}
 
 \subsubsection{Optimal environment}
 
@@ -268,13 +258,13 @@ Soccer properties:
 It also suggested to move \emph{terrains} from \emph{golf} to \emph{soccer}, with a depth of 7 minus branch length 1, giving a score of 6 (see Figure~\ref{fig:GolfToSoccer}).
 Playing soccer on uneven terrain is also an interesting idea (see Figure~\ref{fig:SoccerTerrain}) that is not common but would be possible to organize, although it may not be an evenly balanced game. One reason for why the interpretations of these suggestions worked well may be because the relations to the other elements in the concept did not contradict. \emph{Terrains} in golf matched with the part \emph{field} in soccer through their common hypernym \emph{parcel}. By not going further up the generalizing chain, the more likely the relations still work.
 
-\begin{figure} \centering \includegraphics[width=1\linewidth]{"Figures/SoccerTerrain"} \caption{An interpretation of how the property \emph{terrain} might be used in the game of soccer} \label{fig:SoccerTerrain} \end{figure}
+\begin{figure} \centering \includegraphics[width=0.5\linewidth]{"Figures/GolfToSoccer"} \caption[Blending soccer and golf]{Top suggestion for moving something from golf to soccer. It suggests to move the property \emph{terrains} (in red) from golf to soccer} \label{fig:GolfToSoccer} \end{figure}
 
-\begin{figure} \centering \includegraphics[width=0.5\linewidth]{"Figures/SoccerToGolf"} \caption{Top suggestion when blending Soccer and Golf. It suggests to move top property \emph{goal} (in red) from Soccer to Golf } \label{fig:SoccerToGolf} \end{figure}
+\begin{figure} \centering \includegraphics[width=1\linewidth]{"Figures/SoccerTerrain"} \caption[Soccer on terrain]{An interpretation of how the property \emph{terrain} might be used in the game of soccer} \label{fig:SoccerTerrain} \end{figure}
 
-\begin{figure} \centering \includegraphics[width=0.5\linewidth]{"Figures/GolfToSoccer"} \caption{Top suggestion for moving something from Golf to Soccer. It suggests to move the property \emph{terrains} (in red) from Golf to Soccer } \label{fig:GolfToSoccer} \end{figure}
 
 \subsubsection{Optimal environment}
+\begin{figure} \centering \includegraphics[width=0.5\linewidth]{"Figures/SoccerToGolf"} \caption[Blending soccer and golf]{Top suggestion when blending soccer and golf. It suggests to move top property \emph{goal} (in red) from soccer to golf.} \label{fig:SoccerToGolf} \end{figure}
 
 %----------------------------------------------------------------------------------------
 

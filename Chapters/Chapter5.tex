@@ -19,9 +19,22 @@ In our approach to concept blending, the elements that make the input spaces are
 An optimal solution may retrieve the properties and all the relations between the words to create a more complete representation of the concept, and not just elements. We have only focused on properties alone since we want to validate the use of generalization in conceptual blending. For further research on a more complete algorithm for conceptual blending, it may be possible to further elaborate the representation, keeping the original relations between the elements from the input spaces to the blend space. It could also be possible to generalize the relations using WordNet, but research should be done on how these relations will be scored and blended.
 
 \subsection{An example}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{"Figures/piano"}
+	\caption[Piano]{A piano}
+	\label{fig:piano}
+\end{figure}
 
 Lets say we have two concepts that we want to blend, for example Cajón and Clapsticks.
 We can retrieve the abstracts using a HTTP call to the wikipedia API:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{"Figures/hurdy gurdy"}
+	\caption[Hurdy gurdy]{A hurdy gurdy. Like other acoustic instruments it has a hollow cavity that enables us to hear the sound coming from the vibration of the strings}
+	\label{fig:hurdy-gurdy}
+\end{figure}
+
 
 \noindent\fbox{
 	\parbox{\textwidth}{
@@ -172,6 +185,15 @@ Other techniques could be to give more score to certain words or synsets than ot
 %----------------------------------------------------------------------------------------
 
 \section{Generic space}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{"Figures/Generic Space Vertical"}
+\caption[Generic space]{The generic space is created by the intersection of properties (strong color) and hypernyms (weak color) of the two concepts. Since every node in the generic space has subtrees in both concepts, we can use it to find properties correlating with a given property. The most general word \emph{entity} can be seen branching vertically into specific categories.}
+\label{fig:generic-space-vertical}
+\end{figure}
+
+
 \subsection{Generalization using hypernyms}
 Our approach to concept blending is inspired by the use of amalgams. When using WordNet we can easily generalize since we have access to each synsets tree of hypernyms. So if we consider the concepts \emph{a red French vehicle} and \emph{a German minivan}, we can find that \emph{French} and \emph{German} share the hypernym \emph{nation}, and minivan and vehicle share the hypernym \emph{vehicle}.
 
